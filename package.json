@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Curated speeches by President Obama",
   "main": "js/index.jsx",
+  "engines": {
+    "node": "4.5.0",
+    "npm": "3.10.7"
+  },
   "scripts": {
     "start": "http-server -c-1 build",
     "dev": "run-p watch serve",
