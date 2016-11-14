@@ -39,7 +39,8 @@
     "build:assets": "run-s clean:assets mkdir:assets _build:assets",
     "_build:assets": "cpr assets build/assets",
     "watch:assets": "run-s build:assets _watch:assets",
-    "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\""
+    "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\"",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Edwin Mah",
   "license": "UNLICENSED",
