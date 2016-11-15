@@ -3,13 +3,11 @@ var React     = require('react');
 var ReactDOM  = require('react-dom');
 //var Provider  = require('react-redux').Provider;
 //var store     = require('./store');
-//var Game      = require('./components/game');
+var App      = require('./components/App');
 
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    <h1>
-      hello world
-    </h1>,
+    <App />,
     document.getElementById('app'));
 });

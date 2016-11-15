@@ -10,7 +10,7 @@
   "scripts": {
     "start": "http-server -c-1 build",
     "dev": "run-p watch serve",
-    "test": "mocha --recursive --compilers js:babel-core/register",
+    "test": "mocha --recursive --compilers jsx:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",
     "serve": "npm start",
