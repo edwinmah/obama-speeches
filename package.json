@@ -42,8 +42,16 @@
     "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\"",
     "heroku-postbuild": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinmah/obama-speeches.git"
+  },
   "author": "Edwin Mah",
   "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/edwinmah/obama-speeches/issues"
+  },
+  "homepage": "https://github.com/edwinmah/obama-speeches#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
