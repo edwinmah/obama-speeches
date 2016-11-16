@@ -5,21 +5,23 @@ var actions = require('../actions/index');
 
 var Footer = React.createClass({
   render: function() {
-    <footer role="contentinfo" className="site-footer">
-      <p>The footer</p>
-    </footer>
+    return (
+      <footer role="contentinfo" className="site-footer">
+        <p>The footer</p>
+      </footer>
+    );
   }
 });
 
 
-var mapStateToProps = function(state, props) {
-  return {
+//var mapStateToProps = function(state, props) {
+//  return {
+//
+//  };
+//};
 
-  };
-};
 
-
-var Container = connect(mapStateToProps)(Footer);
+var Container = connect()(Footer);
 
 
 module.exports = Container;
