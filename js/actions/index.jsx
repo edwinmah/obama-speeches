@@ -20,7 +20,7 @@ var fetchSpeechesError = function(speeches, error) {
 };
 
 
-var fetchSpeeches = function() {
+var fetchSpeeches = function(speeches) {
   return function(dispatch) {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches';

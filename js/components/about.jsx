@@ -11,17 +11,20 @@ var About = React.createClass({
   },
 
   render: function() {
-    <section id="about">
-      <h2>{this.props.page.title.rendered}</h2>
-      {this.props.page.content.rendered}
-    </section>
+    console.log(this.props.aboutPage);
+    return (
+      <section id="about">
+        <h2>{this.props.aboutPage.title.rendered}</h2>
+        {this.props.aboutPage.content.rendered}
+      </section>
+    );
   }
 });
 
 
 var mapStateToProps = function(state, props) {
   return {
-
+    aboutPage: state.aboutPage
   };
 };
 

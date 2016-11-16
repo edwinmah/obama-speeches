@@ -6,9 +6,9 @@ var Link    = router.Link;
 
 
 var SpeechList = React.createClass({
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.dispatch(
-      actions.fetchSpeeches()
+      actions.fetchSpeeches(this.props.speeches)
     );
   },
 
@@ -18,22 +18,20 @@ var SpeechList = React.createClass({
     );
   },
 
-  render: function() {
-    var speeches = this.props.speeches.map(
-      function(speech, i) {
-        return (
-          <li key={i}>
-            <Link to={'/' + speech.slug} onClick={this.viewSingleSpeech}>
-              {speech.title.rendered}
-            </Link>
-          </li>
-        );
-      }
+  eachSpeech: function(speech, i) {
+    return (
+      <li key={i}>
+        <Link to={'/' + speech.slug} onClick={this.viewSingleSpeech}>
+          {speech.title.rendered}
+        </Link>
+      </li>
     );
+  },
 
+  render: function() {
     return (
       <ul className="speech-list">
-        {speeches}
+        {this.props.speeches.map(this.eachSpeech)}
       </ul>
     );
   }

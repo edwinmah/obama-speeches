@@ -15,7 +15,7 @@ var appReducer = function(state, action) {
 
   switch (action.type) {
     case actions.FETCH_SPEECHES_SUCCESS :
-      var newSpeeches = state.speeches.concat([ action.speeches ]);
+      var newSpeeches = state.speeches.concat(action.speeches);
       return Object.assign({}, state, { speeches: newSpeeches });
       break;
 
