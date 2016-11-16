@@ -34,6 +34,8 @@ var appReducer = function(state, action) {
       });
       break;
   }
+
+  return state;
 };
 
 
