@@ -190,6 +190,54 @@ var fetchSiteInfo = function() {
 };
 
 
+var FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
+var fetchSearchSuccess = function(speeches, searchString) {
+  return {
+    type: FETCH_SEARCH_SUCCESS,
+    speeches: speeches,
+    searchString: searchString
+  };
+};
+
+
+var FETCH_SEARCH_ERROR = 'FETCH_SEARCH_ERROR';
+var fetchSearchError = function(speeches, searchString, error) {
+  return {
+    type: FETCH_SEARCH_ERROR,
+    speeches: speeches,
+    searchString: searchString,
+    error: error
+  };
+};
+
+
+var fetchSearch = function(searchString) {
+  return function(dispatch) {
+    var init = { method: 'GET' };
+    var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?filter[s]=' + searchString;
+
+    return fetch(url, init).then(function(response) {
+      if (response.status < 200 || response.status >= 300) {
+        var error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      var speeches = data;
+      return dispatch(fetchSearchSuccess(speeches, searchString));
+    })
+    .catch(function(error) {
+      return dispatch(fetchSearchError(speeches, searchString, error));
+    });
+  }
+};
+
+
 exports.FETCH_SPEECHES_SUCCESS  = FETCH_SPEECHES_SUCCESS;
 exports.fetchSpeechesSuccess    = fetchSpeechesSuccess;
 
@@ -221,3 +269,11 @@ exports.FETCH_SITE_INFO_ERROR = FETCH_SITE_INFO_ERROR;
 exports.fetchSiteInfoError    = fetchSiteInfoError;
 
 exports.fetchSiteInfo = fetchSiteInfo;
+
+exports.FETCH_SEARCH_SUCCESS  = FETCH_SEARCH_SUCCESS;
+exports.fetchSearchSuccess    = fetchSearchSuccess;
+
+exports.FETCH_SEARCH_ERROR  = FETCH_SEARCH_ERROR;
+exports.fetchSearchError    = fetchSearchError;
+
+exports.fetchSearch  = fetchSearch;

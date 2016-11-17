@@ -6,7 +6,8 @@ var initialState = {
   description: '',
   aboutPage: {},
   speeches: {},
-  currentSpeech: {}
+  currentSpeech: {},
+  searchString: ''
 };
 
 
@@ -19,7 +20,10 @@ var appReducer = function(state, action) {
       action.speeches.forEach(function(speech) {
         newSpeeches[speech.id] = speech;
       });
-      return Object.assign({}, state, { speeches: newSpeeches });
+      return Object.assign({}, state, {
+        speeches: newSpeeches,
+        searchString: initialState.searchString
+      });
       break;
 
     case actions.FETCH_SINGLE_SPEECH_SUCCESS :
@@ -37,6 +41,17 @@ var appReducer = function(state, action) {
       return Object.assign({}, state, {
         name: action.name,
         description: action.description
+      });
+      break;
+
+    case actions.FETCH_SEARCH_SUCCESS :
+      var newSpeeches = {};
+      action.speeches.forEach(function(speech) {
+        newSpeeches[speech.id] = speech;
+      });
+      return Object.assign({}, state, {
+        speeches: newSpeeches,
+        searchString: action.searchString
       });
       break;
   }

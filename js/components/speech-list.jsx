@@ -1,4 +1,5 @@
 var React   = require('react');
+var Search  = require('./search');
 var connect = require('react-redux').connect;
 var actions = require('../actions/index');
 var router  = require('react-router');
@@ -33,11 +34,21 @@ var SpeechList = React.createClass({
     if (!this.props.speeches) {
       return <div>loading...</div>;
     }
-
+    if (Object.keys(this.props.speeches).length === 0) {
+      return (
+        <div>
+          <Search />
+          <p>No search results for <strong>{this.props.searchString}</strong>.</p>
+        </div>
+      );
+    }
     return (
-      <ul className="speech-list">
-        {Object.keys(this.props.speeches).map(this.eachSpeech)}
-      </ul>
+      <div>
+        <Search />
+        <ul className="speech-list">
+          {Object.keys(this.props.speeches).map(this.eachSpeech)}
+        </ul>
+      </div>
     );
   }
 });
@@ -45,7 +56,8 @@ var SpeechList = React.createClass({
 
 var mapStateToProps = function(state, props) {
   return {
-    speeches: state.speeches
+    speeches: state.speeches,
+    searchString: state.searchString
   };
 };
 
