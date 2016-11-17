@@ -12,26 +12,31 @@ var SpeechList = React.createClass({
     );
   },
 
-  viewSingleSpeech: function() {
-    this.props.dispatch(
-      actions.fetchSingleSpeech(this.props.speech.id)
-    );
+  getTitle: function(speechId) {
+    return { __html: this.props.speeches[speechId].title.rendered};
   },
 
-  eachSpeech: function(speech, i) {
+  getExcerpt: function(speechId) {
+    return { __html: this.props.speeches[speechId].excerpt.rendered};
+  },
+
+  eachSpeech: function(speechId, i) {
     return (
       <li key={i}>
-        <Link to={'/' + speech.slug} onClick={this.viewSingleSpeech}>
-          {speech.title.rendered}
-        </Link>
+        <Link to={'/' + speechId} dangerouslySetInnerHTML={this.getTitle(speechId)} />
+        <div className="excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
       </li>
     );
   },
 
   render: function() {
+    if (!this.props.speeches) {
+      return <div>loading...</div>;
+    }
+
     return (
       <ul className="speech-list">
-        {this.props.speeches.map(this.eachSpeech)}
+        {Object.keys(this.props.speeches).map(this.eachSpeech)}
       </ul>
     );
   }

@@ -4,18 +4,25 @@ var actions = require('../actions/index');
 
 
 var About = React.createClass({
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.dispatch(
       actions.fetchAboutPage()
     );
   },
 
+  getPageContent: function() {
+    return { __html: this.props.aboutPage.content.rendered};
+  },
+
   render: function() {
-    console.log(this.props.aboutPage);
+    if (!this.props.aboutPage.title || !this.props.aboutPage.content) {
+      return <div>loading...</div>;
+    }
+
     return (
       <section id="about">
         <h2>{this.props.aboutPage.title.rendered}</h2>
-        {this.props.aboutPage.content.rendered}
+        <div dangerouslySetInnerHTML={this.getPageContent()} />
       </section>
     );
   }

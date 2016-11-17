@@ -6,7 +6,7 @@ var Link    = router.Link;
 
 
 var Header = React.createClass({
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.dispatch(
       actions.fetchSiteInfo()
     );
@@ -26,7 +26,8 @@ var Header = React.createClass({
 var mapStateToProps = function(state, props) {
   return {
     name: state.name,
-    description: state.description
+    description: state.description,
+    speeches: state.speeches
   };
 };
 

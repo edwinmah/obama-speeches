@@ -5,7 +5,7 @@ var initialState = {
   name: '',
   description: '',
   aboutPage: {},
-  speeches: [],
+  speeches: {},
   currentSpeech: {}
 };
 
@@ -15,12 +15,18 @@ var appReducer = function(state, action) {
 
   switch (action.type) {
     case actions.FETCH_SPEECHES_SUCCESS :
-      var newSpeeches = state.speeches.concat(action.speeches);
+      var newSpeeches = {};
+      action.speeches.forEach(function(speech) {
+        newSpeeches[speech.id] = speech;
+      });
       return Object.assign({}, state, { speeches: newSpeeches });
       break;
 
     case actions.FETCH_SINGLE_SPEECH_SUCCESS :
-      return Object.assign({}, state, { currentSpeech: action.currentSpeech });
+      var newSpeeches = Object.assign({}, state.speeches, {
+        [actions.currentSpeech.id]: actions.currentSpeech
+      });
+      return Object.assign({}, state, { speeches: newSpeeches });
       break;
 
     case actions.FETCH_ABOUT_PAGE_SUCCESS :

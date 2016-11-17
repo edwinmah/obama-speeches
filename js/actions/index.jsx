@@ -86,7 +86,7 @@ var fetchSingleSpeech = function(speechId) {
       var speech = data;
       return dispatch(fetchSingleSpeechSuccess(speech));
     })
-    .catch(function(error) {
+    .catch(function(speech, error) {
       return dispatch(fetchSingleSpeechError(speech, error));
     });
   }
@@ -132,7 +132,7 @@ var fetchAboutPage = function() {
       var page = data;
       return dispatch(fetchAboutPageSuccess(page));
     })
-    .catch(function(error) {
+    .catch(function(page, error) {
       return dispatch(fetchAboutPageError(page, error));
     });
   }

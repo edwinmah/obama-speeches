@@ -5,6 +5,7 @@ var router      = require('react-router');
 var Provider    = require('react-redux').Provider;
 var store       = require('./store');
 var App         = require('./components/App');
+var Speech      = require('./components/speech');
 var SpeechList  = require('./components/speech-list');
 var Router      = router.Router;
 var Route       = router.Route;
@@ -12,23 +13,13 @@ var hashHistory = router.hashHistory;
 var IndexRoute  = router.IndexRoute;
 
 
-//var routes = (
-//  <Provider store={store}>
-//    <Router history={hashHistory}>
-//      <Route path="/" component={App}>
-//        <Route path=":slug" component={SpeechList} />
-//      </Route>
-//    </Router>
-//  </Provider>
-//);
-
-
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <Route path=":slug" component={SpeechList} />
+        <Route path="" component={App}>
+          <Route path="/" component={SpeechList} />
+          <Route path="/:id" component={Speech} />
         </Route>
       </Router>
     </Provider>,
