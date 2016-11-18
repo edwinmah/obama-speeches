@@ -188,8 +188,23 @@ describe('The App', function() {
   });
 
   it('FETCH_SEARCH_SUCCESS can set searchString and speeches.', function() {
-    // the search results
-    speeches = [
+    state = initialState;
+    state.speeches = {
+      '1': {
+        'id': 1,
+        'title': { 'rendered': 'Test title 1' },
+        'content': { 'rendered': 'search-term' },
+        'excerpt': { 'rendered': 'Test excerpt 1' }
+      },
+      '2': {
+        'id': 2,
+        'title': { 'rendered': 'Test title 2' },
+        'content': { 'rendered': 'Test content 2' },
+        'excerpt': { 'rendered': 'Test excerpt 2' }
+      }
+    };
+
+    var searchResults = [
       {
         'id': 1,
         'title': { 'rendered': 'Test title 1' },
@@ -200,11 +215,13 @@ describe('The App', function() {
 
     var action = {
       type: 'FETCH_SEARCH_SUCCESS',
-      speeches: speeches,
+      speeches: searchResults,
       searchString: searchString
     };
 
     var newState = reducer.appReducer(state, action);
+    var prevSpeechesLength = Object.keys(state.speeches).length;
+    var newSpeechesLength  = Object.keys(newState.speeches).length;
 
     newState.searchString.should.be.a('string');
     newState.searchString.should.equal('search-term');
@@ -213,5 +230,7 @@ describe('The App', function() {
     newState.speeches['1'].title.rendered.should.equal('Test title 1');
     newState.speeches['1'].content.rendered.should.equal('search-term');
     newState.speeches['1'].excerpt.rendered.should.equal('Test excerpt 1');
+    prevSpeechesLength.should.equal(2);
+    newSpeechesLength.should.equal(1);
   });
 });
