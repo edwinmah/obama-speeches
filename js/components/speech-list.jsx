@@ -7,10 +7,27 @@ var Link    = router.Link;
 
 
 var SpeechList = React.createClass({
+  fetchData: function(locationQuery) {
+    if (locationQuery) {
+      this.props.dispatch(actions.fetchSearch(locationQuery));
+    } else {
+      this.props.dispatch(actions.fetchSpeeches(this.props.speeches));
+    }
+  },
+
   componentWillMount: function() {
-    this.props.dispatch(
-      actions.fetchSpeeches(this.props.speeches)
-    );
+    this.fetchData(this.props.location.query['filter[s]']);
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    var locationQuery     = nextProps.location.query['filter[s]'];
+    var prevLocationQuery = this.props.location.query['filter[s]'];
+
+    if (locationQuery === prevLocationQuery) {
+      return;
+    }
+
+    this.fetchData(locationQuery);
   },
 
   getTitle: function(speechId) {

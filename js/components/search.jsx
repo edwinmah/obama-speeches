@@ -8,17 +8,15 @@ var Link    = router.Link;
 var Search = React.createClass({
   submitSearch: function(event) {
     event.preventDefault();
-    this.props.dispatch(
-      actions.fetchSearch(this.refs.searchString.value)
-    );
+    this.context.router.push({
+      pathname: '/',
+      query: {'filter[s]': this.refs.searchString.value}
+    });
     this.refs.searchString.value = '';
   },
 
-  viewAllSpeeches: function(event) {
-    event.preventDefault();
-    this.props.dispatch(
-      actions.fetchSpeeches(this.props.speeches)
-    );
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
   },
 
   render: function() {
@@ -31,7 +29,7 @@ var Search = React.createClass({
           </label>
           <button type="submit">Search</button>
         </form>
-        <p style={style}>Search term: <strong>{this.props.searchString}</strong>. <Link to={'#'} onClick={this.viewAllSpeeches}>Go back to all speeches.</Link></p>
+        <p style={style}>Search term: <strong>{this.props.searchString}</strong></p>
       </div>
 
     );
