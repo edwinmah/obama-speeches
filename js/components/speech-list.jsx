@@ -22,9 +22,13 @@ var SpeechList = React.createClass({
   },
 
   eachSpeech: function(speechId, i) {
+    var dateFormat = new Date(this.props.speeches[speechId].date);
+    var datePretty = dateFormat.toDateString();
+
     return (
       <li key={i}>
         <Link to={'/' + speechId} dangerouslySetInnerHTML={this.getTitle(speechId)} />
+        <p>Delivered on {datePretty}</p>
         <div className="excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
       </li>
     );

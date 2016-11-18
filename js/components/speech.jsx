@@ -27,11 +27,14 @@ var Speech = React.createClass({
     }
 
     var { id, title, date, content } = this.props.currentSpeech;
+    var dateFormat = new Date(date);
+    var datePretty = dateFormat.toDateString();
+
     return (
       <article id={id} className="speech">
         <header className="speech__heading">
           <h2 dangerouslySetInnerHTML={this.getTitle()} />
-          <p>Delivered on {date}</p>
+          <p>Delivered on {datePretty}</p>
         </header>
         <div className="speech__entry" dangerouslySetInnerHTML={this.getContent()} />
       </article>
