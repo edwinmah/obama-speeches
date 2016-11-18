@@ -28,7 +28,7 @@ var appReducer = function(state, action) {
 
     case actions.FETCH_SINGLE_SPEECH_SUCCESS :
       var newSpeeches = Object.assign({}, state.speeches, {
-        [actions.currentSpeech.id]: actions.currentSpeech
+        [action.currentSpeech.id]: action.currentSpeech
       });
       return Object.assign({}, state, { speeches: newSpeeches });
       break;
