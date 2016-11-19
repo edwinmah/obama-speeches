@@ -158,7 +158,7 @@ describe('The App', function() {
     newState.speeches['2'].excerpt.rendered.should.equal('Test excerpt 2');
   });
 
-  it('FETCH_ABOUT_PAGE_SUCCESS can retrieve about page.', function() {
+  it('FETCH_ABOUT_PAGE_SUCCESS can retrieve about page information.', function() {
     var action = {
       type: 'FETCH_ABOUT_PAGE_SUCCESS',
       page: page
