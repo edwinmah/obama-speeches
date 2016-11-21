@@ -124,22 +124,13 @@ describe('The App', function() {
 
   it('FETCH_SINGLE_SPEECH_SUCCESS can retrieve a speech.', function() {
     state = initialState;
-    state.speeches = {
-      '1': {
-        'id': 1,
-        'title': { 'rendered': 'Test title 1' },
-        'content': { 'rendered': 'search-term' },
-        'excerpt': { 'rendered': 'Test excerpt 1' }
-      },
-      '2': {
-        'id': 2,
-        'title': { 'rendered': 'Test title 2' },
-        'content': { 'rendered': 'Test content 2' },
-        'excerpt': { 'rendered': 'Test excerpt 2' }
-      }
-    };
 
-    var speech = state.speeches['2'];
+    var speech = {
+      'id': 2,
+      'title': { 'rendered': 'Test title 2' },
+      'content': { 'rendered': 'Test content 2' },
+      'excerpt': { 'rendered': 'Test excerpt 2' }
+    };
     var action = {
       type: 'FETCH_SINGLE_SPEECH_SUCCESS',
       currentSpeech: speech
@@ -148,10 +139,6 @@ describe('The App', function() {
     var newState = reducer.appReducer(state, action);
 
     newState.speeches.should.be.an('object');
-    newState.speeches['1'].id.should.equal(1);
-    newState.speeches['1'].title.rendered.should.equal('Test title 1');
-    newState.speeches['1'].content.rendered.should.equal('search-term');
-    newState.speeches['1'].excerpt.rendered.should.equal('Test excerpt 1');
     newState.speeches['2'].id.should.equal(2);
     newState.speeches['2'].title.rendered.should.equal('Test title 2');
     newState.speeches['2'].content.rendered.should.equal('Test content 2');
@@ -207,7 +194,7 @@ describe('The App', function() {
     var searchResults = [
       {
         'id': 1,
-        'title': { 'rendered': 'Test title 1' },
+        'title': { 'rendered': 'Test title 1.1' },
         'content': { 'rendered': 'search-term' },
         'excerpt': { 'rendered': 'Test excerpt 1' }
       }
@@ -227,7 +214,7 @@ describe('The App', function() {
     newState.searchString.should.equal('search-term');
     newState.speeches.should.be.an('object');
     newState.speeches['1'].id.should.equal(1);
-    newState.speeches['1'].title.rendered.should.equal('Test title 1');
+    newState.speeches['1'].title.rendered.should.equal('Test title 1.1');
     newState.speeches['1'].content.rendered.should.equal('search-term');
     newState.speeches['1'].excerpt.rendered.should.equal('Test excerpt 1');
     prevSpeechesLength.should.equal(2);
