@@ -41,13 +41,19 @@ var SpeechList = React.createClass({
   eachSpeech: function(speechId, i) {
     var dateFormat = new Date(this.props.speeches[speechId].date);
     var datePretty = dateFormat.toDateString();
+    var speechNum  = 'speech-' + speechId;
 
     return (
-      <li key={i}>
-        <Link to={'/' + speechId} dangerouslySetInnerHTML={this.getTitle(speechId)} />
-        <p>Delivered on {datePretty}</p>
-        <div className="excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
-      </li>
+      <article key={i} id={speechNum} className="speech speech--archive column sm-one-half md-one-third">
+        <header className="speech__header speech__header--archive">
+          <h3 className="speech__title">
+            <Link to={'/' + speechId} dangerouslySetInnerHTML={this.getTitle(speechId)} />
+          </h3>
+          <p className="speech__meta speech__meta--date">Delivered on <span className="date">{datePretty}</span></p>
+        </header>
+        <div className="speech__excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
+        <Link to={'/' + speechId}>Read more &raquo;</Link>
+      </article>
     );
   },
 
@@ -57,19 +63,21 @@ var SpeechList = React.createClass({
     }
     if (Object.keys(this.props.speeches).length === 0) {
       return (
-        <div>
-          <Search />
-          <p>No search results for <strong>{this.props.searchString}</strong>.</p>
-        </div>
+        <section className="section speeches">
+          <div className="container container--max">
+            <h2 className="speeches__title column full">The Speeches</h2>
+            <p className="search__status--none column full">No search results for <strong>{this.props.searchString}</strong>.</p>
+          </div>
+        </section>
       );
     }
     return (
-      <div>
-        <Search />
-        <ul className="speech-list">
+      <section className="section speeches">
+        <div className="container container--max">
+          <h2 className="speeches__title column full">The Speeches</h2>
           {Object.keys(this.props.speeches).map(this.eachSpeech)}
-        </ul>
-      </div>
+        </div>
+      </section>
     );
   }
 });

@@ -26,17 +26,27 @@ var Speech = React.createClass({
       return <div>loading...</div>;
     }
 
-    var { id, title, date, content } = this.props.currentSpeech;
+    var { id, title, date, content, video } = this.props.currentSpeech;
     var dateFormat = new Date(date);
     var datePretty = dateFormat.toDateString();
+    var speechNum  = 'speech-' + id + '';
 
     return (
-      <article id={id} className="speech">
-        <header className="speech__heading">
-          <h2 dangerouslySetInnerHTML={this.getTitle()} />
-          <p>Delivered on {datePretty}</p>
+      <article id={speechNum} className="speech speech--single">
+        <header className="speech__header speech__header--single">
+          <div className="container container--large">
+            <h2 className="speech__title" dangerouslySetInnerHTML={this.getTitle()} />
+            <p className="speech__meta speech__meta--date">Delivered on <span className="date">{datePretty}</span></p>
+          </div>
         </header>
-        <div className="speech__entry" dangerouslySetInnerHTML={this.getContent()} />
+        <div className="container container--max">
+          <div className="intrinsic intrinsic--16x9 speech__media">
+            <iframe src={video} className="intrinsic__item"></iframe>
+          </div>
+        </div>
+        <div className="container container--medium">
+          <div className="speech__entry" dangerouslySetInnerHTML={this.getContent()} />
+        </div>
       </article>
     );
   }

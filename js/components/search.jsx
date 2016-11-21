@@ -22,16 +22,17 @@ var Search = React.createClass({
   render: function() {
     var style = (this.props.searchString) ? { display: 'block' } : { display: 'none' };
     return (
-      <div>
-        <form onSubmit={this.submitSearch}>
-          <label><span className="visuallyhidden focusable">Search speeches</span>
-            <input type="text" ref="searchString" />
-          </label>
-          <button type="submit">Search</button>
-        </form>
-        <p style={style}>Search term: <strong>{this.props.searchString}</strong></p>
+      <div className="search">
+        <div className="container container--small">
+          <form className="search__form" onSubmit={this.submitSearch}>
+            <label className="search__label"><span className="search__label--hidden visuallyhidden focusable">Search speeches</span>
+              <input className="search__input" type="text" ref="searchString" placeholder="Search the speeches..." />
+            </label>
+            <button type="submit" className="search__button visuallyhidden focusable">Search</button>
+          </form>
+          <p className="search__status" style={style}>Search term: <strong>{this.props.searchString}</strong></p>
+        </div>
       </div>
-
     );
   }
 });
