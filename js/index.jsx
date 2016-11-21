@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <Router history={hashHistory}>
         <Route path="" component={App}>
           <Route path="/" component={SpeechList} />
-          <Route path="/:id" component={Speech} />
+          <Route path="/:id/:slug" component={Speech} />
         </Route>
       </Router>
     </Provider>,

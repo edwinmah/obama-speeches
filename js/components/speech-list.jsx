@@ -41,18 +41,19 @@ var SpeechList = React.createClass({
   eachSpeech: function(speechId, i) {
     var dateFormat = new Date(this.props.speeches[speechId].date);
     var datePretty = dateFormat.toDateString();
+    var speechSlug = this.props.speeches[speechId].slug;
     var speechNum  = 'speech-' + speechId;
 
     return (
       <article key={i} id={speechNum} className="speech speech--archive column sm-one-half md-one-third">
         <header className="speech__header speech__header--archive">
           <h3 className="speech__title">
-            <Link to={'/' + speechId} dangerouslySetInnerHTML={this.getTitle(speechId)} />
+            <Link to={'/' + speechId + '/' + speechSlug} dangerouslySetInnerHTML={this.getTitle(speechId)} />
           </h3>
           <p className="speech__meta speech__meta--date">Delivered on <span className="date">{datePretty}</span></p>
         </header>
         <div className="speech__excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
-        <Link to={'/' + speechId}>Read more &raquo;</Link>
+        <Link to={'/' + speechId + '/' + speechSlug}>Read more &raquo;</Link>
       </article>
     );
   },
