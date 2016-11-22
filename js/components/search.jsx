@@ -33,7 +33,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-          <p className="search__status">{this.status.term}</p>
+          <p className="search__status">{statusMsg}</p>
         </div>
       </div>
     );
