@@ -148,10 +148,6 @@ html {
 }
 
 /* Grid */
-.full {
-  width: 100%;
-}
-
 .column {
   padding-left: 1.5%;
   padding-right: 1.5%;

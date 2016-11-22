@@ -16,7 +16,7 @@ var Header = React.createClass({
     return (
       <header role="banner" className="site-header">
         <div className="container container--max">
-          <div className="branding full">
+          <div className="branding">
             <h1 className="site-header__title"><Link to={'/'}>{this.props.name}</Link></h1>
             <p className="site-header__tagline">{this.props.description}</p>
           </div>

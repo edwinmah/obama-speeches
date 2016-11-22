@@ -25,8 +25,8 @@ var About = React.createClass({
 
     return (
       <section id="about" className="about column sm-one-half">
-        <h2 className="about__title column full">{this.props.aboutPage.title.rendered}</h2>
-        <div className="about__entry column full" dangerouslySetInnerHTML={this.getPageContent()} />
+        <h2 className="about__title column">{this.props.aboutPage.title.rendered}</h2>
+        <div className="about__entry column" dangerouslySetInnerHTML={this.getPageContent()} />
       </section>
     );
   }

@@ -63,7 +63,7 @@ var SpeechList = React.createClass({
       return (
         <section className="section speeches">
           <div className="container container--max">
-            <h2 className="speeches__title column full">The Speeches</h2>
+            <h2 className="speeches__title column">The Speeches</h2>
             <p className="search__status--no-results column full">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>
           </div>
         </section>
@@ -72,8 +72,8 @@ var SpeechList = React.createClass({
       return (
         <section className="section speeches">
           <div className="container container--max">
-            <h2 className="speeches__title column full">The Speeches</h2>
-            <p className="status--loading column full">Loading speeches...</p>
+            <h2 className="speeches__title column">The Speeches</h2>
+            <p className="status--loading column">Loading speeches...</p>
           </div>
         </section>
       );
@@ -81,7 +81,7 @@ var SpeechList = React.createClass({
     return (
       <section className="section speeches">
         <div className="container container--max">
-          <h2 className="speeches__title column full">The Speeches</h2>
+          <h2 className="speeches__title column">The Speeches</h2>
           {Object.keys(this.props.speeches).map(this.eachSpeech)}
         </div>
       </section>
