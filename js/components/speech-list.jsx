@@ -16,12 +16,12 @@ var SpeechList = React.createClass({
   },
 
   componentWillMount: function() {
-    this.fetchData(this.props.location.query['filter[s]']);
+    this.fetchData(this.props.location.query.search);
   },
 
   componentWillReceiveProps: function(nextProps) {
-    var locationQuery     = nextProps.location.query['filter[s]'];
-    var prevLocationQuery = this.props.location.query['filter[s]'];
+    var locationQuery     = nextProps.location.query.search;
+    var prevLocationQuery = this.props.location.query.search;
 
     if (locationQuery === prevLocationQuery) {
       return;

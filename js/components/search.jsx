@@ -10,9 +10,10 @@ var Search = React.createClass({
     event.preventDefault();
     this.context.router.push({
       pathname: '/',
-      query: {'filter[s]': this.refs.searchString.value}
+      query: {'search': this.refs.searchString.value}
     });
     this.refs.searchString.value = '';
+    this.status.term = 'Searching...';
   },
 
   contextTypes: {
@@ -20,8 +21,8 @@ var Search = React.createClass({
   },
 
   render: function() {
-    var style     = (this.context.router.location.search)  ? { display: 'block' } : { display: 'none' };
-    var statusMsg = (this.props.searchString) ? 'Search term: ' + this.props.searchString : 'loading...';
+    var style     = (this.context.router.location.search) ? { display: 'block' } : { display: 'none' };
+    var statusMsg = (this.props.searchString) ? 'Searching...' : (this.props.searchString) ? 'Search term: ' + this.props.searchString : '';
 
     return (
       <div className="search">
@@ -32,8 +33,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-
-          <p className="search__status" style={style}>{statusMsg}</p>
+          <p className="search__status">{this.status.term}</p>
         </div>
       </div>
     );
