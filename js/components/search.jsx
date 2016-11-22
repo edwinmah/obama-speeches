@@ -20,7 +20,9 @@ var Search = React.createClass({
   },
 
   render: function() {
-    var style = (this.props.searchString) ? { display: 'block' } : { display: 'none' };
+    var style     = (this.context.router.location.search)  ? { display: 'block' } : { display: 'none' };
+    var statusMsg = (this.props.searchString) ? 'Search term: ' + this.props.searchString : 'loading...';
+
     return (
       <div className="search">
         <div className="container container--small">
@@ -30,7 +32,8 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-          <p className="search__status" style={style}>Search term: <strong>{this.props.searchString}</strong></p>
+
+          <p className="search__status" style={style}>{statusMsg}</p>
         </div>
       </div>
     );
