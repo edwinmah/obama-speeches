@@ -22,8 +22,9 @@ var Search = React.createClass({
   },
 
   render: function() {
+    var condition = this.context.router.location.query.search && !this.props.searchString;
     var style     = (this.context.router.location.query.search) ? { display: 'block' } : { display: 'none' };
-    var statusMsg = (this.props.searchString) ? 'Search term: ' + this.props.searchString :  'Searching...';
+    var statusMsg = (condition) ? 'Searching...' : (this.props.searchString) ? 'Search term: ' + this.props.searchString :  '';
 
     return (
       <div className="search">
