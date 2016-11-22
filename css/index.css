@@ -198,6 +198,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;
+  font-size: 1.25em;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, .7);
 }
 
@@ -239,7 +240,8 @@ html {
   margin-bottom: 3em;
 }
 
-.speech__header--single {
+.speech__header--single,
+.speech--loading {
   padding-top: 1.5em;
   padding-bottom: 1.5em;
 }

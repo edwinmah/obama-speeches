@@ -59,15 +59,21 @@ var SpeechList = React.createClass({
   },
 
   render: function() {
-    if (!this.props.speeches) {
-      return <div>loading...</div>;
-    }
-    if (Object.keys(this.props.speeches).length === 0) {
+    if (Object.keys(this.props.speeches).length === 0 && this.props.searchString) {
       return (
         <section className="section speeches">
           <div className="container container--max">
             <h2 className="speeches__title column full">The Speeches</h2>
-            <p className="search__status--none column full">No search results for <strong>{this.props.searchString}</strong>.</p>
+            <p className="search__status--no-results column full">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>
+          </div>
+        </section>
+      );
+    } else if (Object.keys(this.props.speeches).length === 0) {
+      return (
+        <section className="section speeches">
+          <div className="container container--max">
+            <h2 className="speeches__title column full">The Speeches</h2>
+            <p className="status--loading column full">Loading speeches...</p>
           </div>
         </section>
       );

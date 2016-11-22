@@ -23,7 +23,13 @@ var Speech = React.createClass({
 
   render: function() {
     if (!this.props.currentSpeech) {
-      return <div>loading...</div>;
+      return (
+        <article className="speech speech--loading">
+          <div className="container container--large">
+            <p className="speech__status">Loading speech...</p>
+          </div>
+        </article>
+      );
     }
 
     var { id, title, date, content, video } = this.props.currentSpeech;
