@@ -21,16 +21,13 @@ var Search = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
-  status: {
-    msg: 'Searching...'
-  },
-
   render: function() {
     var condition1 = this.context.router.location.query.search && !this.props.searchString;
     var condition2 = this.context.router.location.query.search === this.props.searchString;
 
-    var statusMsg  = (condition1) ? 'Searching...' :
-                     (condition2) ? 'Search term: ' + this.props.searchString : '';
+    var style      = (this.context.router.location.search) ? {display: 'block'} : {display: 'none'};
+
+    var statusMsg  = (condition1) ? 'Searching...' : (condition2) ? 'Search term: ' + this.props.searchString : '';
 
     return (
       <div className="search">
@@ -41,7 +38,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-          <p className="search__status">{statusMsg}</p>
+          <p className="search__status" style={style}>{statusMsg}</p>
         </div>
       </div>
     );
