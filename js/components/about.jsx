@@ -16,7 +16,11 @@ var About = React.createClass({
 
   render: function() {
     if (!this.props.aboutPage.title || !this.props.aboutPage.content) {
-      return <div>loading...</div>;
+      return (
+        <section id="about" className="about column sm-one-half">
+          <div className="about__entry--loading column full">Loading...</div>
+        </section>
+      );
     }
 
     return (
