@@ -8,10 +8,12 @@ var Link    = router.Link;
 var Search = React.createClass({
   submitSearch: function(event) {
     event.preventDefault();
-    this.context.router.push({
-      pathname: '/',
-      query: {'search': this.refs.searchString.value}
-    });
+    if (this.refs.searchString.value !== '') {
+      this.context.router.push({
+        pathname: '/',
+        query: {'search': this.refs.searchString.value}
+      });
+    }
     this.refs.searchString.value = '';
   },
 
@@ -20,7 +22,7 @@ var Search = React.createClass({
   },
 
   render: function() {
-    var style     = (this.context.router.location.search) ? { display: 'block' } : { display: 'none' };
+    var style     = (this.context.router.location.query.search) ? { display: 'block' } : { display: 'none' };
     var statusMsg = (this.props.searchString) ? 'Search term: ' + this.props.searchString :  'Searching...';
 
     return (
