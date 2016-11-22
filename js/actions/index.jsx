@@ -231,7 +231,7 @@ var fetchSearch = function(searchString) {
       var speeches = data;
       return dispatch(fetchSearchSuccess(speeches, searchString));
     })
-    .catch(function(error) {
+    .catch(function(speeches, error) {
       return dispatch(fetchSearchError(speeches, searchString, error));
     });
   }
