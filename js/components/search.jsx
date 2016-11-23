@@ -6,6 +6,10 @@ var Link    = router.Link;
 
 
 var Search = React.createClass({
+  getInitialState: function() {
+    return { isSearchPending: false }
+  },
+
   submitSearch: function(event) {
     event.preventDefault();
     if (this.refs.searchString.value !== '') {
@@ -13,6 +17,7 @@ var Search = React.createClass({
         pathname: '/',
         query: {'search': this.refs.searchString.value}
       });
+      this.setState({ isSearchPending: true });
     }
     this.refs.searchString.value = '';
   },
@@ -21,13 +26,31 @@ var Search = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
+  componentWillReceiveProps: function(nextProps, nextContext) {
+    var query = nextContext.router.location.query.search;
+    if (!query) {
+      return;
+    }
+    if (this.props.searchString !== nextProps.searchString) {
+      this.setState({ isSearchPending: false });
+    }
+  },
+
   render: function() {
-    var condition1 = this.context.router.location.query.search && !this.props.searchString;
-    var condition2 = this.context.router.location.query.search === this.props.searchString;
+    var isSearchUrl       = this.context.router.location.query.search && !this.props.searchString;
+    var isSearchComplete  = this.context.router.location.query.search === this.props.searchString;
 
-    var style = (this.context.router.location.search) ? {display: 'block'} : {display: 'none'};
+    var style = (this.context.router.location.search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
 
-    var statusMsg  = (condition1) ? 'Searching...' : (condition2) ? 'Search term: ' + this.props.searchString : '';
+    var statusMsg;
+
+    if (isSearchUrl || this.state.isSearchPending) {
+      statusMsg = 'Searching...';
+    } else if (isSearchComplete && !this.state.isSearchPending) {
+      statusMsg = 'Search term: ' + this.props.searchString;
+    } else {
+      statusMsg = '';
+    }
 
     return (
       <div className="search">
@@ -38,7 +61,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-          <p className="search__status" style={style}>{statusMsg}</p>
+          <p className="search__status">{statusMsg} <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
         </div>
       </div>
     );
