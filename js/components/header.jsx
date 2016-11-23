@@ -14,7 +14,7 @@ var Header = React.createClass({
 
   render: function() {
     return (
-      <header role="banner" className="site-header">
+      <header role="banner" className="site-header intrinsic intrinsic--16x9">
         <div className="container container--max">
           <div className="branding">
             <h1 className="site-header__title"><Link to={'/'}>{this.props.name}</Link></h1>

@@ -185,9 +185,6 @@ html {
 
 /* Site Header */
 .site-header {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
   background-color: #4A100D;
   background-image: url('../assets/images/3594694575_658a6510a5_o--small.jpg');
   background-position: 0 0;
@@ -274,7 +271,7 @@ html {
 /* Footer */
 .site-footer {
   border-top: 1px solid #e9e9e9;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
 .site-footer__media,
@@ -282,9 +279,11 @@ html {
   margin-bottom: 1.5em;
 }
 
+/*
 .about__entry > p:first-child {
   font-size: 1.25em;
 }
+*/
 
 @media (min-width: 38.75em) {
   .site-footer__media,
@@ -293,7 +292,7 @@ html {
   }
 
   .site-footer__img {
-    height: 85vh;
+    height: 100vh;
     object-fit: cover;
   }
 
