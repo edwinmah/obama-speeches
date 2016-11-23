@@ -64,7 +64,7 @@ var SpeechList = React.createClass({
         <section className="section speeches">
           <div className="container container--max">
             <h2 className="speeches__title column">The Speeches</h2>
-            <p className="search__status--no-results column full">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>
+            <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>
           </div>
         </section>
       );
