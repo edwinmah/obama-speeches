@@ -1,6 +1,5 @@
 var React       = require('react');
 var Header      = require('./header');
-var Nav         = require('./nav');
 var SpeechList  = require('./speech-list');
 var Speech      = require('./speech');
 var Search      = require('./search');
