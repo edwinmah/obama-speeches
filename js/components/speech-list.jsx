@@ -58,31 +58,22 @@ var SpeechList = React.createClass({
     );
   },
 
-  render: function() {
+  getResponse: function() {
     if (Object.keys(this.props.speeches).length === 0 && this.props.searchString) {
-      return (
-        <section className="section speeches">
-          <div className="container container--max">
-            <h2 className="speeches__title column">The Speeches</h2>
-            <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>
-          </div>
-        </section>
-      );
+      return <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>;
     } else if (Object.keys(this.props.speeches).length === 0) {
-      return (
-        <section className="section speeches">
-          <div className="container container--max">
-            <h2 className="speeches__title column">The Speeches</h2>
-            <p className="status--loading column">Loading speeches...</p>
-          </div>
-        </section>
-      );
+      return <p className="status--loading column">Loading speeches...</p>;
+    } else {
+      return <div className="speeches__container">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
     }
+  },
+
+  render: function() {
     return (
       <section className="section speeches">
         <div className="container container--max">
           <h2 className="speeches__title column">The Speeches</h2>
-          {Object.keys(this.props.speeches).map(this.eachSpeech)}
+          {this.getResponse()}
         </div>
       </section>
     );
