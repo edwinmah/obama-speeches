@@ -14,7 +14,7 @@ Other software used to create this site include [Redux](http://redux.js.org/), [
 
 ## WordPress setup
 
-Before creating the React front-end theme, it's necessary to perform a [standard WordPress installation](https://codex.wordpress.org/Installing_WordPress) and install and activate the [WordPress REST API plugin](https://wordpress.org/plugins/rest-api/).
+Before creating the React front-end theme, it's necessary to perform a [standard WordPress installation](https://codex.wordpress.org/Installing_WordPress), setup permalinks, and install and activate the [WordPress REST API plugin](https://wordpress.org/plugins/rest-api/).
 
 If you plan on having content that is not one of the standard WordPress post types (e.g., post, page, attachment, revision), you can create a [custom content type](https://codex.wordpress.org/Function_Reference/register_post_type).
 
