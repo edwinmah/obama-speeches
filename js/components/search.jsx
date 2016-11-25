@@ -46,7 +46,7 @@ var Search = React.createClass({
     var statusMsg;
 
     if (isSearchUrl || this.state.isSearchPending) {
-      statusMsg = 'Searching ';
+      statusMsg = 'Searching';
       loadingDisplay = { display: 'inline-block' };
     } else if (isSearchComplete && !this.state.isSearchPending) {
       statusMsg = 'Search term: ' + this.props.searchString;
