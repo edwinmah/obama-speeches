@@ -1,5 +1,6 @@
 var React   = require('react');
 var Search  = require('./search');
+var Loading = require('./loading');
 var connect = require('react-redux').connect;
 var actions = require('../actions/index');
 var router  = require('react-router');
@@ -62,7 +63,7 @@ var SpeechList = React.createClass({
     if (Object.keys(this.props.speeches).length === 0 && this.props.searchString) {
       return <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>;
     } else if (Object.keys(this.props.speeches).length === 0) {
-      return <p className="status--loading column">Loading speeches...</p>;
+      return <p className="status--loading column">Loading speeches<Loading /></p>;
     } else {
       return <div className="speeches__container">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
     }

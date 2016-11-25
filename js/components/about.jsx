@@ -1,6 +1,7 @@
 var React   = require('react');
 var connect = require('react-redux').connect;
 var actions = require('../actions/index');
+var Loading = require('./loading');
 
 
 var About = React.createClass({
@@ -18,7 +19,7 @@ var About = React.createClass({
     if (!this.props.aboutPage.title || !this.props.aboutPage.content) {
       return (
         <section id="about" className="about column sm-one-half">
-          <div className="about__entry--loading column full">Loading...</div>
+          <div className="about__entry--loading column full">Loading<Loading /></div>
         </section>
       );
     }

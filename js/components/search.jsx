@@ -3,6 +3,7 @@ var connect = require('react-redux').connect;
 var actions = require('../actions/index');
 var router  = require('react-router');
 var Link    = router.Link;
+var Loading  = require('./loading');
 
 
 var Search = React.createClass({
@@ -41,13 +42,15 @@ var Search = React.createClass({
     var isSearchComplete  = this.context.router.location.query.search === this.props.searchString;
 
     var style = (this.context.router.location.search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
-
+    var loadingDisplay = { display: 'none' };
     var statusMsg;
 
     if (isSearchUrl || this.state.isSearchPending) {
-      statusMsg = 'Searching...';
+      statusMsg = 'Searching ';
+      loadingDisplay = { display: 'inline-block' };
     } else if (isSearchComplete && !this.state.isSearchPending) {
       statusMsg = 'Search term: ' + this.props.searchString;
+      loadingDisplay = { display: 'none' };
     } else {
       statusMsg = '';
     }
@@ -61,7 +64,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button visuallyhidden focusable">Search</button>
           </form>
-          <p className="search__status">{statusMsg} <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
+          <p className="search__status">{statusMsg}<Loading display={loadingDisplay} /> <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
         </div>
       </div>
     );
