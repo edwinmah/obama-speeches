@@ -51,7 +51,7 @@ var SpeechList = React.createClass({
           <h3 className="speech__title">
             <Link to={'/' + speechId + '/' + speechSlug} dangerouslySetInnerHTML={this.getTitle(speechId)} />
           </h3>
-          <p className="speech__meta speech__meta--date">Delivered on <span className="date">{datePretty}</span></p>
+          <p className="speech__meta speech__meta--date">Delivered on <time dateTime={this.props.speeches[speechId].date} className="date">{datePretty}</time></p>
         </header>
         <div className="speech__excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
         <Link to={'/' + speechId + '/' + speechSlug}>Read more &raquo;</Link>

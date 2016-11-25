@@ -42,7 +42,7 @@ var Speech = React.createClass({
         <header className="speech__header speech__header--single">
           <div className="container container--large">
             <h2 className="speech__title" dangerouslySetInnerHTML={this.getTitle()} />
-            <p className="speech__meta speech__meta--date">Delivered on <span className="date">{datePretty}</span></p>
+            <p className="speech__meta speech__meta--date">Delivered on <time dateTime={date} className="date">{datePretty}</time></p>
           </div>
         </header>
         <div className="container container--max">
