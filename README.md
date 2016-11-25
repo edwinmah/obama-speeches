@@ -8,21 +8,21 @@ President Obama is one of the finest public speakers and writers of this generat
 
 ## Technology used
 
-This site was created with [React](https://facebook.github.io/react/) and the [WordPress REST API](http://v2.wp-api.org/). The primary advantage of using React with the WordPress REST API is that the site, a single-page application, does not have to query the site's WordPress database each time a page is loaded. As a result, the site will respond more quickly to user interaction.
+This site was created with [React](https://facebook.github.io/react/) and the [WordPress REST API](http://v2.wp-api.org/). The primary advantage of using React with the WordPress REST API is that the site, a single-page application, does not have to query the WordPress database each time a page is loaded. As a result, the site will respond more quickly to user interaction.
 
 Other software used to create this site include [Redux](http://redux.js.org/), [React Router](https://github.com/ReactTraining/react-router), [Thunk](https://github.com/gaearon/redux-thunk), [Webpack](http://webpack.github.io/docs/), [Mocha](https://mochajs.org/), and [Chai](http://chaijs.com/).
 
-## General procedures followed
+## WordPress setup
 
-1. Perform a [standard WordPress installation](https://codex.wordpress.org/Installing_WordPress).
-2. Install and activate the [WordPress REST API plugin](https://wordpress.org/plugins/rest-api/).
-3. (Optional) If desired, create a [custom content type](https://codex.wordpress.org/Function_Reference/register_post_type). This step is only necessary if you plan to have content that is not one of the standard WordPress post types (e.g., post, page, attachment, revision).
+Before creating the React front-end theme, it's necessary to perform a [standard WordPress installation](https://codex.wordpress.org/Installing_WordPress) and install and activate the [WordPress REST API plugin](https://wordpress.org/plugins/rest-api/).
+
+If you plan on having content that is not one of the standard WordPress post types (e.g., post, page, attachment, revision), you can create a [custom content type](https://codex.wordpress.org/Function_Reference/register_post_type).
 
 There are several [custom content type WordPress plugins](https://wordpress.org/plugins/search.php?q=custom+post+type) available that allow you to create custom content types from the WordPress dashboard. Alternatively, you could [create a WordPress plugin](https://codex.wordpress.org/Writing_a_Plugin) using the `register_post_type` WordPress function.
 
-A good resource for WordPress PHP code is [GenerateWP](https://generatewp.com), which is an online tool that will generate the necessary code for most WordPress functions. In addition, a good plugin to use to manage custom plugin code is [Code Snippets](https://wordpress.org/plugins/code-snippets/).
+A good resource for WordPress development is [GenerateWP](https://generatewp.com), which is an online tool that will generate the necessary code for most WordPress functions. In addition, a good plugin to manage custom plugin code is [Code Snippets](https://wordpress.org/plugins/code-snippets/), which provides an easy way to add plugin functions without creating your own actual plugins.
 
-Here is the PHP code that I used to create a "Speeches" custom content type:
+For this site, I used to the following function to create a "Speeches" custom content type:
 
 	// Register Custom Post Type
 	function emah_cpt_speeches() {
@@ -80,9 +80,11 @@ Here is the PHP code that I used to create a "Speeches" custom content type:
 	}
 	add_action( 'init', 'emah_cpt_speeches', 0 );
 
-4. (Optional) If you want to add custom fields to the JSON response, follow the [instructions for modifying responses](http://v2.wp-api.org/extending/modifying/) in the WordPress REST API documentation and [make note of the `register_rest_field` example](http://v2.wp-api.org/extending/modifying/#how-to-use-registerrestfield).
+Make sure that the `show_in_rest` argument is set to `true` because this will make the custom content type available in the JSON API response.
 
-In my case, I used the following in a plugin to add a "video" field for a YouTube link for each speech:
+If you want to add custom fields to the JSON response, follow the [instructions for modifying responses](http://v2.wp-api.org/extending/modifying/) in the WordPress REST API documentation and make note of the [`register_rest_field` example](http://v2.wp-api.org/extending/modifying/#how-to-use-registerrestfield).
+
+For this site, I used the `register_rest_field` to add a "video" field for a YouTube link for each speech. Note that the code is not that different than the example provided in the API documentation.
 
 	add_action( 'rest_api_init', 'slug_register_video' );
 	function slug_register_video() {
@@ -108,6 +110,8 @@ In my case, I used the following in a plugin to add a "video" field for a YouTub
 	function slug_get_video( $object, $field_name, $request ) {
 	  return get_post_meta( $object[ 'id' ], $field_name, true );
 	}
+
+Now, create the content via the WordPress dashboard just as you would normally and build the React front-end.
 
 ## Screenshots
 
