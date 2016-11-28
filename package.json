@@ -25,7 +25,7 @@
     "clean:jsx": "rimraf build/js",
     "mkdir:jsx": "mkdirp build/js",
     "build:jsx": "run-s clean:jsx mkdir:jsx _build:jsx",
-    "_build:jsx": "webpack",
+    "_build:jsx": "webpack -p",
     "watch:jsx": "run-s build:jsx _watch:jsx",
     "_watch:jsx": "webpack --watch",
     "clean:css": "rimraf build/css",
@@ -83,6 +83,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.4",
+    "uglify": "^0.1.5",
     "webpack": "^1.13.1"
   }
 }
