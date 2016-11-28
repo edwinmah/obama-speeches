@@ -1,6 +1,7 @@
-var React       = require('react');
-var Header      = require('./header');
-var Footer      = require('./footer');
+var React  = require('react');
+var Header = require('./header');
+var Search = require('./search');
+var Footer = require('./footer');
 
 
 var App = React.createClass({
