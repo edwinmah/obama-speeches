@@ -10,7 +10,6 @@ var SpeechList  = require('./components/speech-list');
 var Router      = router.Router;
 var Route       = router.Route;
 var hashHistory = router.hashHistory;
-var IndexRoute  = router.IndexRoute;
 
 
 document.addEventListener('DOMContentLoaded', function() {

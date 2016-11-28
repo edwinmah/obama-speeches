@@ -1,5 +1,4 @@
 var React   = require('react');
-var Search  = require('./search');
 var Loading = require('./loading');
 var connect = require('react-redux').connect;
 var actions = require('../actions/index');

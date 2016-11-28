@@ -32,7 +32,7 @@ var Speech = React.createClass({
       );
     }
 
-    var { id, title, date, content, video } = this.props.currentSpeech;
+    var { id, date, video } = this.props.currentSpeech;
     var dateFormat = new Date(date);
     var datePretty = dateFormat.toDateString();
     var speechNum  = 'speech-' + id + '';
