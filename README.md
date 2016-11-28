@@ -84,7 +84,7 @@ Make sure that the `show_in_rest` argument is set to `true` because this will ma
 
 If you want to add custom fields to the JSON response, follow the [instructions for modifying responses](http://v2.wp-api.org/extending/modifying/) in the WordPress REST API documentation and make note of the [`register_rest_field` example](http://v2.wp-api.org/extending/modifying/#how-to-use-registerrestfield).
 
-For this site, I used the `register_rest_field` to add a "video" field for a YouTube link for each speech. Note that the code is not that different than the example provided in the API documentation.
+For this site, I used `register_rest_field` to add a "video" field for a YouTube link for each speech. Note that the code is not that different than the example provided in the API documentation.
 
 	add_action( 'rest_api_init', 'slug_register_video' );
 	function slug_register_video() {
