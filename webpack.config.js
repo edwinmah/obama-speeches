@@ -8,7 +8,7 @@ module.exports = {
       path: path.resolve(__dirname, 'build/js'),
       filename: 'index.js',
   },
-  //devtool: 'inline-source-map',
+  devtool: 'source-map',
   module: {
     loaders: [
       {
