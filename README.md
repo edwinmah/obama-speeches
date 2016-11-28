@@ -22,7 +22,7 @@ There are several [custom content type WordPress plugins](https://wordpress.org/
 
 A good resource for WordPress development is [GenerateWP](https://generatewp.com), which is an online tool that will generate the necessary code for most WordPress functions. In addition, a good plugin to manage custom plugin code is [Code Snippets](https://wordpress.org/plugins/code-snippets/), which provides an easy way to add plugin functions without creating your own actual plugins.
 
-For this site, I used to the following function to create a "Speeches" custom content type:
+For this site, I used the following function to create a "Speeches" custom content type:
 
 	// Register Custom Post Type
 	function emah_cpt_speeches() {
