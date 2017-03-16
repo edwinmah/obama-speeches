@@ -64,7 +64,7 @@ var SpeechList = React.createClass({
     } else if (Object.keys(this.props.speeches).length === 0) {
       return <p className="status--loading column">Loading speeches<Loading /></p>;
     } else {
-      return <div className="speeches__container">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
+      return <div className="speeches__container cf">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
     }
   },
 

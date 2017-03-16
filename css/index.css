@@ -127,12 +127,15 @@ html {
   max-width: 91.25%;
 }
 
+.cf::before,
+.cf::after,
 .container::before,
 .container::after {
   display: table;
   content: " ";
 }
 
+.cf::after,
 .container::after {
   clear: both;
 }
