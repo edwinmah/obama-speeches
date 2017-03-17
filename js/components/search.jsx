@@ -60,8 +60,8 @@ var Search = React.createClass({
           <form className="search__form" onSubmit={this.submitSearch}>
             <label className="search__label"><span className="search__label--hidden visuallyhidden focusable">Search speeches</span>
               <input className="search__input" type="text" ref="searchString" placeholder="Search the speeches..." />
-              <button type="submit" className="search__button">Search</button>
             </label>
+            <button type="submit" className="search__button">Search</button>
           </form>
           <p className="search__status">{statusMsg}<Loading display={loadingDisplay} /> <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
         </div>
