@@ -347,12 +347,12 @@ html {
   animation: sk-bouncedelay .8s infinite ease-in-out both;
 }
 
-.spinner .bounce1 {
+.spinner > .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
 
-.spinner .bounce2 {
+.spinner > .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }

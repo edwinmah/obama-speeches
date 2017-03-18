@@ -59,9 +59,12 @@ var SpeechList = React.createClass({
   },
 
   getResponse: function() {
-    if (Object.keys(this.props.speeches).length === 0 && this.props.searchString) {
+    var isSearchComplete = this.props.location.query.search === this.props.searchString;
+    var speechesCount    = Object.keys(this.props.speeches).length;
+
+    if (speechesCount === 0 && this.props.searchString) {
       return <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>;
-    } else if (Object.keys(this.props.speeches).length === 0) {
+    } else if (speechesCount === 0 || this.props.location.query.search !== undefined && !isSearchComplete) {
       return <p className="status--loading column">Loading speeches<Loading /></p>;
     } else {
       return <div className="speeches__container cf">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
