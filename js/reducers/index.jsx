@@ -1,7 +1,7 @@
-var actions = require('../actions/index');
+import actions from '../actions/index';
 
 
-var initialState = {
+let initialState = {
   name: '',
   description: '',
   aboutPage: {},
@@ -11,7 +11,7 @@ var initialState = {
 };
 
 
-var appReducer = function(state, action) {
+const appReducer = (state, action) => {
   state = state || initialState;
 
   switch (action.type) {
