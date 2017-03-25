@@ -69,7 +69,7 @@ const fetchSingleSpeechError = (speech, error) => {
 const fetchSingleSpeech = (speechId) => {
   return (dispatch) => {
     var init = { method: 'GET' };
-    var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches/' + speechId;
+    var url  = `https://www.edwinmah.com/r/wp-json/wp/v2/speeches/${speechId}`;
 
     return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
@@ -214,7 +214,7 @@ const fetchSearchError = (speeches, searchString, error) => {
 const fetchSearch = (searchString) => {
   return (dispatch) => {
     var init = { method: 'GET' };
-    var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12&search=' + searchString;
+    var url  = `https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12&search=${searchString}`;
 
     return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
