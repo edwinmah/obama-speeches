@@ -1,7 +1,7 @@
 import actions from '../actions/index';
 
 
-let initialState = {
+const initialState = {
   name: '',
   description: '',
   aboutPage: {},
@@ -58,6 +58,3 @@ export const appReducer = (state, action) => {
 
   return state;
 };
-
-
-//exports.appReducer = appReducer;
