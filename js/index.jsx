@@ -1,18 +1,15 @@
 require('babel-polyfill');
-var React       = require('react');
-var ReactDOM    = require('react-dom');
-var router      = require('react-router');
-var Provider    = require('react-redux').Provider;
-var store       = require('./store');
-var App         = require('./components/App');
-var Speech      = require('./components/speech');
-var SpeechList  = require('./components/speech-list');
-var Router      = router.Router;
-var Route       = router.Route;
-var hashHistory = router.hashHistory;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router, Route, hashHistory } from 'react-router';
+import store from './store';
+import App from './components/App';
+import Speech from './components/speech';
+import SpeechList from './components/speech-list';
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={hashHistory}>
