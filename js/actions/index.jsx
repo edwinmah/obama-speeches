@@ -1,8 +1,8 @@
 require('isomorphic-fetch');
 
 
-var FETCH_SPEECHES_SUCCESS = 'FETCH_SPEECHES_SUCCESS';
-var fetchSpeechesSuccess = function(speeches) {
+const FETCH_SPEECHES_SUCCESS = 'FETCH_SPEECHES_SUCCESS';
+const fetchSpeechesSuccess = (speeches) => {
   return {
     type: FETCH_SPEECHES_SUCCESS,
     speeches: speeches
@@ -10,8 +10,8 @@ var fetchSpeechesSuccess = function(speeches) {
 };
 
 
-var FETCH_SPEECHES_ERROR = 'FETCH_SPEECHES_ERROR';
-var fetchSpeechesError = function(speeches, error) {
+const FETCH_SPEECHES_ERROR = 'FETCH_SPEECHES_ERROR';
+const fetchSpeechesError = (speeches, error) => {
   return {
     type: FETCH_SPEECHES_ERROR,
     speeches: speeches,
@@ -20,12 +20,12 @@ var fetchSpeechesError = function(speeches, error) {
 };
 
 
-var fetchSpeeches = function(speeches) {
-  return function(dispatch) {
+const fetchSpeeches = (speeches) => {
+  return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12';
 
-    return fetch(url, init).then(function(response) {
+    return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
         error.response = response;
@@ -33,22 +33,22 @@ var fetchSpeeches = function(speeches) {
       }
       return response;
     })
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(data) {
+    .then((data) => {
       var speeches = data;
       return dispatch(fetchSpeechesSuccess(speeches));
     })
-    .catch(function(error) {
+    .catch((error) => {
       return dispatch(fetchSpeechesError(speeches, error));
     });
   }
 };
 
 
-var FETCH_SINGLE_SPEECH_SUCCESS = 'FETCH_SINGLE_SPEECH_SUCCESS';
-var fetchSingleSpeechSuccess = function(speech) {
+const FETCH_SINGLE_SPEECH_SUCCESS = 'FETCH_SINGLE_SPEECH_SUCCESS';
+const fetchSingleSpeechSuccess = (speech) => {
   return {
     type: FETCH_SINGLE_SPEECH_SUCCESS,
     currentSpeech: speech
@@ -56,8 +56,8 @@ var fetchSingleSpeechSuccess = function(speech) {
 };
 
 
-var FETCH_SINGLE_SPEECH_ERROR = 'FETCH_SINGLE_SPEECH_ERROR';
-var fetchSingleSpeechError = function(speech, error) {
+const FETCH_SINGLE_SPEECH_ERROR = 'FETCH_SINGLE_SPEECH_ERROR';
+const fetchSingleSpeechError = (speech, error) => {
   return {
     type: FETCH_SINGLE_SPEECH_ERROR,
     currentSpeech: speech,
@@ -66,12 +66,12 @@ var fetchSingleSpeechError = function(speech, error) {
 };
 
 
-var fetchSingleSpeech = function(speechId) {
-  return function(dispatch) {
+const fetchSingleSpeech = (speechId) => {
+  return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches/' + speechId;
 
-    return fetch(url, init).then(function(response) {
+    return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
         error.response = response;
@@ -79,22 +79,22 @@ var fetchSingleSpeech = function(speechId) {
       }
       return response;
     })
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(data) {
+    .then((data) => {
       var speech = data;
       return dispatch(fetchSingleSpeechSuccess(speech));
     })
-    .catch(function(speech, error) {
+    .catch((speech, error) => {
       return dispatch(fetchSingleSpeechError(speech, error));
     });
   }
 };
 
 
-var FETCH_ABOUT_PAGE_SUCCESS = 'FETCH_ABOUT_PAGE_SUCCESS';
-var fetchAboutPageSuccess = function(page) {
+const FETCH_ABOUT_PAGE_SUCCESS = 'FETCH_ABOUT_PAGE_SUCCESS';
+const fetchAboutPageSuccess = (page) => {
   return {
     type: FETCH_ABOUT_PAGE_SUCCESS,
     page: page
@@ -102,8 +102,8 @@ var fetchAboutPageSuccess = function(page) {
 };
 
 
-var FETCH_ABOUT_PAGE_ERROR = 'FETCH_ABOUT_PAGE_ERROR';
-var fetchAboutPageError = function(page, error) {
+const FETCH_ABOUT_PAGE_ERROR = 'FETCH_ABOUT_PAGE_ERROR';
+const fetchAboutPageError = (page, error) => {
   return {
     type: FETCH_ABOUT_PAGE_ERROR,
     page: page,
@@ -112,12 +112,12 @@ var fetchAboutPageError = function(page, error) {
 };
 
 
-var fetchAboutPage = function() {
-  return function(dispatch) {
+const fetchAboutPage = () => {
+  return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/pages/2';
 
-    return fetch(url, init).then(function(response) {
+    return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
         error.response = response;
@@ -125,10 +125,10 @@ var fetchAboutPage = function() {
       }
       return response;
     })
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(data) {
+    .then((data) => {
       var page = data;
       return dispatch(fetchAboutPageSuccess(page));
     })
@@ -139,8 +139,8 @@ var fetchAboutPage = function() {
 };
 
 
-var FETCH_SITE_INFO_SUCCESS = 'FETCH_SITE_INFO_SUCCESS';
-var fetchSiteInfoSuccess = function(name, description) {
+const FETCH_SITE_INFO_SUCCESS = 'FETCH_SITE_INFO_SUCCESS';
+const fetchSiteInfoSuccess = (name, description) => {
   return {
     type: FETCH_SITE_INFO_SUCCESS,
     name: name,
@@ -149,8 +149,8 @@ var fetchSiteInfoSuccess = function(name, description) {
 };
 
 
-var FETCH_SITE_INFO_ERROR = 'FETCH_SITE_INFO_ERROR';
-var fetchSiteInfoError = function(name, description, error) {
+const FETCH_SITE_INFO_ERROR = 'FETCH_SITE_INFO_ERROR';
+const fetchSiteInfoError = (name, description, error) => {
   return {
     type: FETCH_SITE_INFO_ERROR,
     name: name,
@@ -160,12 +160,12 @@ var fetchSiteInfoError = function(name, description, error) {
 };
 
 
-var fetchSiteInfo = function() {
-  return function(dispatch) {
+const fetchSiteInfo = () => {
+  return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json';
 
-    return fetch(url, init).then(function(response) {
+    return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
         error.response = response;
@@ -173,15 +173,15 @@ var fetchSiteInfo = function() {
       }
       return response;
     })
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(data) {
+    .then((data) => {
       var name = data.name;
       var description = data.description;
       return dispatch(fetchSiteInfoSuccess(name, description));
     })
-    .catch(function(error) {
+    .catch((error) => {
       var name = data.name;
       var description = data.description;
       return dispatch(fetchSiteInfoError(name, description, error));
@@ -190,8 +190,8 @@ var fetchSiteInfo = function() {
 };
 
 
-var FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
-var fetchSearchSuccess = function(speeches, searchString) {
+const FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
+const fetchSearchSuccess = (speeches, searchString) => {
   return {
     type: FETCH_SEARCH_SUCCESS,
     speeches: speeches,
@@ -200,8 +200,8 @@ var fetchSearchSuccess = function(speeches, searchString) {
 };
 
 
-var FETCH_SEARCH_ERROR = 'FETCH_SEARCH_ERROR';
-var fetchSearchError = function(speeches, searchString, error) {
+const FETCH_SEARCH_ERROR = 'FETCH_SEARCH_ERROR';
+const fetchSearchError = (speeches, searchString, error) => {
   return {
     type: FETCH_SEARCH_ERROR,
     speeches: speeches,
@@ -211,12 +211,12 @@ var fetchSearchError = function(speeches, searchString, error) {
 };
 
 
-var fetchSearch = function(searchString) {
-  return function(dispatch) {
+const fetchSearch = (searchString) => {
+  return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12&search=' + searchString;
 
-    return fetch(url, init).then(function(response) {
+    return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
         var error = new Error(response.statusText);
         error.response = response;
@@ -224,14 +224,14 @@ var fetchSearch = function(searchString) {
       }
       return response;
     })
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(data) {
+    .then((data) => {
       var speeches = data;
       return dispatch(fetchSearchSuccess(speeches, searchString));
     })
-    .catch(function(speeches, error) {
+    .catch((speeches, error) => {
       return dispatch(fetchSearchError(speeches, searchString, error));
     });
   }
