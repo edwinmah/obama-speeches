@@ -11,7 +11,7 @@ let initialState = {
 };
 
 
-const appReducer = (state, action) => {
+export const appReducer = (state, action) => {
   state = state || initialState;
 
   switch (action.type) {
@@ -60,4 +60,4 @@ const appReducer = (state, action) => {
 };
 
 
-exports.appReducer = appReducer;
+//exports.appReducer = appReducer;
