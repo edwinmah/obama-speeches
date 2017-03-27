@@ -78,7 +78,4 @@ var mapStateToProps = function(state, props) {
 };
 
 
-var Container = connect(mapStateToProps)(Search);
-
-
-module.exports = Container;
+export default connect(mapStateToProps)(Search);
