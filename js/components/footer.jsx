@@ -1,5 +1,5 @@
-var React   = require('react');
-var About   = require('./about');
+import React from 'react';
+import About from './about';
 
 
 var Footer = React.createClass({
