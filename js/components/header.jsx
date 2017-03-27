@@ -1,17 +1,19 @@
 import React from 'react';
-import actions from '../actions';
+import { fetchSiteInfo } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-var Header = React.createClass({
-  componentWillMount: function() {
-    this.props.dispatch(
-      actions.fetchSiteInfo()
-    );
-  },
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  render: function() {
+  componentWillMount() {
+    this.props.dispatch(fetchSiteInfo());
+  }
+
+  render() {
     return (
       <header role="banner" className="site-header intrinsic intrinsic--16x9">
         <div className="container container--max">
@@ -23,10 +25,10 @@ var Header = React.createClass({
       </header>
     );
   }
-});
+}
 
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     name: state.name,
     description: state.description,
@@ -35,7 +37,4 @@ var mapStateToProps = function(state, props) {
 };
 
 
-var Container = connect(mapStateToProps)(Header);
-
-
-module.exports = Container;
+export default connect(mapStateToProps)(Header);
