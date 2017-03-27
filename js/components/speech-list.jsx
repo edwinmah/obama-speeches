@@ -91,7 +91,4 @@ const mapStateToProps = (state, props) => {
 };
 
 
-var Container = connect(mapStateToProps)(SpeechList);
-
-
-module.exports = Container;
+export default connect(mapStateToProps)(SpeechList);
