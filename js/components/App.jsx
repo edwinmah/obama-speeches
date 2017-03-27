@@ -4,8 +4,12 @@ import Search from './search';
 import Footer from './footer';
 
 
-var App = React.createClass({
-  render: function() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
       <div>
         <Header />
@@ -17,7 +21,7 @@ var App = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 module.exports = App;
