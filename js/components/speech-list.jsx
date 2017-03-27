@@ -83,7 +83,7 @@ var SpeechList = React.createClass({
 });
 
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     speeches: state.speeches,
     searchString: state.searchString
