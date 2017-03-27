@@ -32,7 +32,7 @@ var About = React.createClass({
 });
 
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     aboutPage: state.aboutPage
   };
