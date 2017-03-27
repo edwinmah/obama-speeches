@@ -1,17 +1,16 @@
-var React   = require('react');
-var Loading = require('./loading');
-var connect = require('react-redux').connect;
-var actions = require('../actions/index');
-var router  = require('react-router');
-var Link    = router.Link;
+import React from 'react';
+import { fetchSearch, fetchSpeeches } from '../actions';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import Loading from './loading';
 
 
 var SpeechList = React.createClass({
   fetchData: function(locationQuery) {
     if (locationQuery) {
-      this.props.dispatch(actions.fetchSearch(locationQuery));
+      this.props.dispatch(fetchSearch(locationQuery));
     } else {
-      this.props.dispatch(actions.fetchSpeeches(this.props.speeches));
+      this.props.dispatch(fetchSpeeches(this.props.speeches));
     }
   },
 
