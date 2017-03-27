@@ -1,4 +1,4 @@
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
 
 const FETCH_SPEECHES_SUCCESS = 'FETCH_SPEECHES_SUCCESS';
