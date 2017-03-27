@@ -2,8 +2,8 @@ import React from 'react';
 import About from './about';
 
 
-var Footer = React.createClass({
-  render: function() {
+export default class Footer extends React.Component {
+  render() {
     return (
       <footer role="contentinfo" className="site-footer">
         <div className="site-footer__media sm-one-half">
@@ -20,7 +20,4 @@ var Footer = React.createClass({
       </footer>
     );
   }
-});
-
-
-module.exports = Footer;
+}
