@@ -39,7 +39,4 @@ const mapStateToProps = (state, props) => {
 };
 
 
-var Container = connect(mapStateToProps)(About);
-
-
-module.exports = Container;
+export default connect(mapStateToProps)(About);
