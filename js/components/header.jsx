@@ -1,8 +1,7 @@
-var React   = require('react');
-var connect = require('react-redux').connect;
-var actions = require('../actions/index');
-var router  = require('react-router');
-var Link    = router.Link;
+import React from 'react';
+import actions from '../actions';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 
 var Header = React.createClass({
