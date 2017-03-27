@@ -1,8 +1,7 @@
-var React   = require('react');
-var connect = require('react-redux').connect;
-var router  = require('react-router');
-var Link    = router.Link;
-var Loading  = require('./loading');
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import Loading from './loading';
 
 
 var Search = React.createClass({
