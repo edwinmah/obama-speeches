@@ -1,14 +1,12 @@
-var React   = require('react');
-var connect = require('react-redux').connect;
-var actions = require('../actions/index');
-var Loading = require('./loading');
+import React from 'react';
+import { fetchAboutPage } from '../actions';
+import { connect } from 'react-redux';
+import Loading from './loading';
 
 
 var About = React.createClass({
   componentWillMount: function() {
-    this.props.dispatch(
-      actions.fetchAboutPage()
-    );
+    this.props.dispatch(fetchAboutPage());
   },
 
   getPageContent: function() {
