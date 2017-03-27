@@ -1,7 +1,7 @@
-var React  = require('react');
-var Header = require('./header');
-var Search = require('./search');
-var Footer = require('./footer');
+import React from 'react';
+import Header from './header';
+import Search from './search';
+import Footer from './footer';
 
 
 var App = React.createClass({
