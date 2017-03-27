@@ -40,15 +40,14 @@ var Search = React.createClass({
     var isSearchComplete  = this.context.router.location.query.search === this.props.searchString;
 
     var style = (this.context.router.location.search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
-    var loadingDisplay = { display: 'none' };
-    var statusMsg;
+    var statusMsg, loadingDisplay;
 
     if (isSearchUrl || this.state.isSearchPending) {
       statusMsg = 'Searching';
-      loadingDisplay = { display: 'inline-block' };
+      loadingDisplay = <Loading />;
     } else if (isSearchComplete && !this.state.isSearchPending) {
       statusMsg = 'Search term: ' + this.props.searchString;
-      loadingDisplay = { display: 'none' };
+      loadingDisplay = '';
     } else {
       statusMsg = '';
     }
@@ -62,7 +61,7 @@ var Search = React.createClass({
             </label>
             <button type="submit" className="search__button">Search</button>
           </form>
-          <p className="search__status">{statusMsg}<Loading display={loadingDisplay} /> <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
+          <p className="search__status">{statusMsg}{loadingDisplay} <span style={style}><Link to={'/'}>&laquo; Return to all speeches</Link></span></p>
         </div>
       </div>
     );
