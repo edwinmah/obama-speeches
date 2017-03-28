@@ -4,12 +4,14 @@ import { Link } from 'react-router';
 import Loading from './loading';
 
 
-var Search = React.createClass({
-  getInitialState: function() {
-    return { isSearchPending: false }
-  },
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isSearchPending: false };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  submitSearch: function(event) {
+  handleSubmit(event) {
     event.preventDefault();
     if (this.refs.searchString.value !== '') {
       this.context.router.push({
@@ -19,13 +21,9 @@ var Search = React.createClass({
       this.setState({ isSearchPending: true });
     }
     this.refs.searchString.value = '';
-  },
+  }
 
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-
-  componentWillReceiveProps: function(nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     var query = nextContext.router.location.query.search;
     if (!query) {
       return;
@@ -33,11 +31,11 @@ var Search = React.createClass({
     if (this.props.searchString !== nextProps.searchString) {
       this.setState({ isSearchPending: false });
     }
-  },
+  }
 
-  render: function() {
-    var isSearchUrl       = this.context.router.location.query.search && !this.props.searchString;
-    var isSearchComplete  = this.context.router.location.query.search === this.props.searchString;
+  render() {
+    var isSearchUrl      = this.context.router.location.query.search && !this.props.searchString;
+    var isSearchComplete = this.context.router.location.query.search === this.props.searchString;
 
     var style = (this.context.router.location.search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
     var statusMsg, loadingDisplay;
@@ -55,7 +53,7 @@ var Search = React.createClass({
     return (
       <div className="search">
         <div className="container container--small">
-          <form className="search__form" onSubmit={this.submitSearch}>
+          <form className="search__form" onSubmit={this.handleSubmit}>
             <label className="search__label"><span className="search__label--hidden visuallyhidden focusable">Search speeches</span>
               <input className="search__input" type="text" ref="searchString" placeholder="Search the speeches..." />
             </label>
@@ -66,7 +64,12 @@ var Search = React.createClass({
       </div>
     );
   }
-});
+}
+
+
+Search.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
 
 const mapStateToProps = (state, props) => {
