@@ -13,12 +13,10 @@ class About extends React.Component {
     this.props.dispatch(fetchAboutPage());
   }
 
-  getPageContent() {
-    return { __html: this.props.aboutPage.content.rendered };
-  }
-
   render() {
-    if (!this.props.aboutPage.title || !this.props.aboutPage.content) {
+    const { title, content } = this.props.aboutPage;
+
+    if (!title || !content) {
       return (
         <section id="about" className="about column sm-one-half">
           <div className="about__entry--loading column">Loading<Loading /></div>
@@ -28,8 +26,8 @@ class About extends React.Component {
 
     return (
       <section id="about" className="about column sm-one-half">
-        <h2 className="about__title column">{this.props.aboutPage.title.rendered}</h2>
-        <div className="about__entry column" dangerouslySetInnerHTML={this.getPageContent()} />
+        <h2 className="about__title column">{title.rendered}</h2>
+        <div className="about__entry column" dangerouslySetInnerHTML={{ __html: content.rendered }} />
       </section>
     );
   }
