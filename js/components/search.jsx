@@ -44,7 +44,7 @@ class Search extends React.Component {
       statusMsg = 'Searching';
       loadingDisplay = <Loading />;
     } else if (isSearchComplete && !this.state.isSearchPending) {
-      statusMsg = 'Search term: ' + this.props.searchString;
+      statusMsg = `Search term: ${this.props.searchString}`;
       loadingDisplay = '';
     } else {
       statusMsg = '';
