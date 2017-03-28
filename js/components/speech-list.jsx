@@ -5,82 +5,80 @@ import { Link } from 'react-router';
 import Loading from './loading';
 
 
-var SpeechList = React.createClass({
-  fetchData: function(locationQuery) {
+class SpeechList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  fetchData(locationQuery) {
     if (locationQuery) {
       this.props.dispatch(fetchSearch(locationQuery));
     } else {
       this.props.dispatch(fetchSpeeches(this.props.speeches));
     }
-  },
+  }
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.fetchData(this.props.location.query.search);
-  },
+  }
 
-  componentWillReceiveProps: function(nextProps) {
-    var locationQuery     = nextProps.location.query.search;
-    var prevLocationQuery = this.props.location.query.search;
+  componentWillReceiveProps(nextProps) {
+    const locationQuery     = nextProps.location.query.search;
+    const prevLocationQuery = this.props.location.query.search;
 
     if (locationQuery === prevLocationQuery) {
       return;
     }
 
     this.fetchData(locationQuery);
-  },
+  }
 
-  getTitle: function(speechId) {
-    return { __html: this.props.speeches[speechId].title.rendered};
-  },
-
-  getExcerpt: function(speechId) {
-    return { __html: this.props.speeches[speechId].excerpt.rendered};
-  },
-
-  eachSpeech: function(speechId, i) {
-    var dateFormat = new Date(this.props.speeches[speechId].date);
-    var datePretty = dateFormat.toDateString();
-    var speechSlug = this.props.speeches[speechId].slug;
-    var speechNum  = 'speech-' + speechId;
+  renderSpeech(speechId) {
+    const { title, slug, date, excerpt } = this.props.speeches[speechId];
+    const datePretty = new Date(date).toDateString();
 
     return (
-      <article key={i} id={speechNum} className="speech speech--archive column sm-one-half md-one-third">
+      <article key={speechId} id={`speech-${speechId}`} className="speech speech--archive column sm-one-half md-one-third">
         <header className="speech__header speech__header--archive">
           <h3 className="speech__title">
-            <Link to={'/' + speechId + '/' + speechSlug} dangerouslySetInnerHTML={this.getTitle(speechId)} />
+            <Link to={`/${speechId}/${slug}`} dangerouslySetInnerHTML={{ __html: title.rendered }} />
           </h3>
-          <p className="speech__meta speech__meta--date">Delivered on <time dateTime={this.props.speeches[speechId].date} className="date">{datePretty}</time></p>
+          <p className="speech__meta speech__meta--date">Delivered on <time dateTime={date} className="date">{datePretty}</time></p>
         </header>
-        <div className="speech__excerpt" dangerouslySetInnerHTML={this.getExcerpt(speechId)} />
-        <Link to={'/' + speechId + '/' + speechSlug}>Read more &raquo;</Link>
+        <div className="speech__excerpt" dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+        <Link to={`/${speechId}/${slug}`}>Read more &raquo;</Link>
       </article>
     );
-  },
+  }
 
-  getResponse: function() {
-    var isSearchComplete = this.props.location.query.search === this.props.searchString;
-    var speechesCount    = Object.keys(this.props.speeches).length;
+  renderSpeeches() {
+    const isSearchComplete = this.props.location.query.search === this.props.searchString;
+    const speechesCount    = Object.keys(this.props.speeches).length;
 
     if (speechesCount === 0 && this.props.searchString) {
       return <p className="search__status--no-results column">No search results for &ldquo;{this.props.searchString}&rdquo;.</p>;
     } else if (speechesCount === 0 || this.props.location.query.search !== undefined && !isSearchComplete) {
       return <p className="status--loading column">Loading speeches<Loading /></p>;
     } else {
-      return <div className="speeches__container cf">{Object.keys(this.props.speeches).map(this.eachSpeech)}</div>;
+      return (
+        <div className="speeches__container cf">
+          {Object.keys(this.props.speeches).map((speechId) => this.renderSpeech(speechId))}
+        </div>
+      );
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <section className="section speeches">
         <div className="container container--max">
           <h2 className="speeches__title column">The Speeches</h2>
-          {this.getResponse()}
+          {this.renderSpeeches()}
         </div>
       </section>
     );
   }
-});
+}
 
 
 const mapStateToProps = (state, props) => {
