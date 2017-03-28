@@ -55,7 +55,7 @@ var Speech = React.createClass({
 });
 
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     speeches: state.speeches,
     currentSpeech: state.speeches[props.params.id]
