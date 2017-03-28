@@ -34,10 +34,11 @@ class Search extends React.Component {
   }
 
   render() {
-    const isSearchUrl      = this.context.router.location.query.search && !this.props.searchString;
-    const isSearchComplete = this.context.router.location.query.search === this.props.searchString;
+    const { query, search } = this.context.router.location;
+    const isSearchUrl       = query.search && !this.props.searchString;
+    const isSearchComplete  = query.search === this.props.searchString;
 
-    const style = (this.context.router.location.search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
+    const style = (search) ? { display: 'inline-block', float: 'right' } : { display: 'none' };
     let statusMsg, loadingDisplay;
 
     if (isSearchUrl || this.state.isSearchPending) {
