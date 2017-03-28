@@ -14,14 +14,6 @@ class Speech extends React.Component {
     this.props.dispatch(fetchSingleSpeech(this.props.params.id));
   }
 
-  getTitle() {
-    return { __html: this.props.currentSpeech.title.rendered };
-  }
-
-  getContent() {
-    return { __html: this.props.currentSpeech.content.rendered };
-  }
-
   render() {
     if (!this.props.currentSpeech) {
       return (
@@ -33,14 +25,14 @@ class Speech extends React.Component {
       );
     }
 
-    const { id, date, video } = this.props.currentSpeech;
+    const { id, date, video, title, content } = this.props.currentSpeech;
     const datePretty = new Date(date).toDateString();
 
     return (
       <article id={`speech-${id}`} className="speech speech--single">
         <header className="speech__header speech__header--single">
           <div className="container container--large">
-            <h2 className="speech__title" dangerouslySetInnerHTML={this.getTitle()} />
+            <h2 className="speech__title" dangerouslySetInnerHTML={{ __html: title.rendered }} />
             <p className="speech__meta speech__meta--date">Delivered on <time dateTime={date} className="date">{datePretty}</time></p>
           </div>
         </header>
@@ -50,7 +42,7 @@ class Speech extends React.Component {
           </div>
         </div>
         <div className="container container--medium">
-          <div className="speech__entry" dangerouslySetInnerHTML={this.getContent()} />
+          <div className="speech__entry" dangerouslySetInnerHTML={{ __html: content.rendered }} />
         </div>
       </article>
     );
