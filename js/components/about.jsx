@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import Loading from './loading';
 
 
-var About = React.createClass({
-  componentWillMount: function() {
+class About extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
     this.props.dispatch(fetchAboutPage());
-  },
+  }
 
-  getPageContent: function() {
-    return { __html: this.props.aboutPage.content.rendered};
-  },
+  getPageContent() {
+    return { __html: this.props.aboutPage.content.rendered };
+  }
 
-  render: function() {
+  render() {
     if (!this.props.aboutPage.title || !this.props.aboutPage.content) {
       return (
         <section id="about" className="about column sm-one-half">
@@ -29,7 +33,7 @@ var About = React.createClass({
       </section>
     );
   }
-});
+}
 
 
 const mapStateToProps = (state, props) => {
