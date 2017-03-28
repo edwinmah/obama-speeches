@@ -1,16 +1,12 @@
-var React   = require('react');
-var connect = require('react-redux').connect;
-var actions = require('../actions/index');
+import React from 'react';
+import { fetchSpeeches, fetchSingleSpeech } from '../actions';
+import { connect } from 'react-redux';
 
 
 var Speech = React.createClass({
   componentWillMount: function() {
-    this.props.dispatch(
-      actions.fetchSpeeches(this.props.speeches)
-    );
-    this.props.dispatch(
-      actions.fetchSingleSpeech(this.props.params.id)
-    );
+    this.props.dispatch(fetchSpeeches(this.props.speeches));
+    this.props.dispatch(fetchSingleSpeech(this.props.params.id));
   },
 
   getTitle: function() {
