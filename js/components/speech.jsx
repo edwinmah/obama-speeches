@@ -3,21 +3,25 @@ import { fetchSpeeches, fetchSingleSpeech } from '../actions';
 import { connect } from 'react-redux';
 
 
-var Speech = React.createClass({
-  componentWillMount: function() {
+class Speech extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
     this.props.dispatch(fetchSpeeches(this.props.speeches));
     this.props.dispatch(fetchSingleSpeech(this.props.params.id));
-  },
+  }
 
-  getTitle: function() {
-    return { __html: this.props.currentSpeech.title.rendered};
-  },
+  getTitle() {
+    return { __html: this.props.currentSpeech.title.rendered };
+  }
 
-  getContent: function() {
-    return { __html: this.props.currentSpeech.content.rendered};
-  },
+  getContent() {
+    return { __html: this.props.currentSpeech.content.rendered };
+  }
 
-  render: function() {
+  render() {
     if (!this.props.currentSpeech) {
       return (
         <article className="speech speech--loading">
@@ -28,13 +32,11 @@ var Speech = React.createClass({
       );
     }
 
-    var { id, date, video } = this.props.currentSpeech;
-    var dateFormat = new Date(date);
-    var datePretty = dateFormat.toDateString();
-    var speechNum  = 'speech-' + id + '';
+    const { id, date, video } = this.props.currentSpeech;
+    const datePretty = new Date(date).toDateString();
 
     return (
-      <article id={speechNum} className="speech speech--single">
+      <article id={`speech-${id}`} className="speech speech--single">
         <header className="speech__header speech__header--single">
           <div className="container container--large">
             <h2 className="speech__title" dangerouslySetInnerHTML={this.getTitle()} />
@@ -52,7 +54,7 @@ var Speech = React.createClass({
       </article>
     );
   }
-});
+}
 
 
 const mapStateToProps = (state, props) => {
