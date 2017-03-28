@@ -1,6 +1,7 @@
 import React from 'react';
 import { fetchSpeeches, fetchSingleSpeech } from '../actions';
 import { connect } from 'react-redux';
+import Loading from './loading';
 
 
 class Speech extends React.Component {
@@ -26,7 +27,7 @@ class Speech extends React.Component {
       return (
         <article className="speech speech--loading">
           <div className="container container--large">
-            <p className="speech__status">Loading speech...</p>
+            <p className="speech__status">Loading speech<Loading /></p>
           </div>
         </article>
       );
