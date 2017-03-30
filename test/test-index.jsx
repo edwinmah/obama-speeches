@@ -54,9 +54,9 @@ var page = {
 var searchString = 'search-term';
 
 
-describe('The App', function() {
+describe('The App', () => {
   // render tests
-  it('loads.', function() {
+  it('loads.', () => {
     var renderer = TestUtils.createRenderer();
     renderer.render(<App store={store} />);
     var result = renderer.getRenderOutput();
@@ -66,7 +66,7 @@ describe('The App', function() {
     result.props.children.should.have.length(3);
   });
 
-  it('Header renders and receives mapped props.',  function() {
+  it('Header renders and receives mapped props.', () => {
     var renderer = TestUtils.createRenderer();
     renderer.render(<Header store={store} />);
     var result = renderer.getRenderOutput();
@@ -78,7 +78,7 @@ describe('The App', function() {
     result.props.description.should.equal('');
   });
 
-  it('SpeechList renders and receives mapped props.', function() {
+  it('SpeechList renders and receives mapped props.', () => {
     var renderer = TestUtils.createRenderer();
     renderer.render(<SpeechList store={store} />);
     var result = renderer.getRenderOutput();
@@ -86,7 +86,7 @@ describe('The App', function() {
     result.props.speeches.should.be.an('object');
   });
 
-  it('About renders and receives mapped props.', function() {
+  it('About renders and receives mapped props.', () => {
     var renderer = TestUtils.createRenderer();
     renderer.render(<About store={store} />);
     var result = renderer.getRenderOutput();
@@ -94,14 +94,14 @@ describe('The App', function() {
     result.props.aboutPage.should.be.an('object');
   });
 
-  it('Footer renders.', function() {
+  it('Footer renders.', () => {
     var renderer = TestUtils.createRenderer();
     renderer.render(<Footer store={store} />);
     var result = renderer.getRenderOutput();
   });
 
   // actions and reducer tests
-  it('FETCH_SPEECHES_SUCCESS can get speeches.', function() {
+  it('FETCH_SPEECHES_SUCCESS can get speeches.', () => {
     actions.fetchSpeeches(speeches);
 
     var action = {
@@ -122,7 +122,7 @@ describe('The App', function() {
     newState.speeches['2'].excerpt.rendered.should.equal('Test excerpt 2');
   });
 
-  it('FETCH_SINGLE_SPEECH_SUCCESS can retrieve a speech.', function() {
+  it('FETCH_SINGLE_SPEECH_SUCCESS can retrieve a speech.', () => {
     state = initialState;
 
     var speech = {
@@ -145,7 +145,7 @@ describe('The App', function() {
     newState.speeches['2'].excerpt.rendered.should.equal('Test excerpt 2');
   });
 
-  it('FETCH_ABOUT_PAGE_SUCCESS can retrieve about page information.', function() {
+  it('FETCH_ABOUT_PAGE_SUCCESS can retrieve about page information.', () => {
     var action = {
       type: 'FETCH_ABOUT_PAGE_SUCCESS',
       page: page
@@ -159,7 +159,7 @@ describe('The App', function() {
     newState.aboutPage.content.rendered.should.equal('About page content');
   });
 
-  it('FETCH_SITE_INFO_SUCCESS can retrieve site information.', function() {
+  it('FETCH_SITE_INFO_SUCCESS can retrieve site information.', () => {
     var action = {
       type: 'FETCH_SITE_INFO_SUCCESS',
       name: siteInfo.name,
@@ -174,7 +174,7 @@ describe('The App', function() {
     newState.description.should.equal('Site description');
   });
 
-  it('FETCH_SEARCH_SUCCESS can set searchString and speeches.', function() {
+  it('FETCH_SEARCH_SUCCESS can set searchString and speeches.', () => {
     state = initialState;
     state.speeches = {
       '1': {
