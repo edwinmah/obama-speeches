@@ -1,17 +1,8 @@
-var React     = require('react');
-var store     = require('../js/store');
-var TestUtils = require('react-addons-test-utils');
-var should    = require('chai').should();
-
-var App         = require('../js/components/App');
-var Header      = require('../js/components/header');
-var SpeechList  = require('../js/components/speech-list');
-var Speech      = require('../js/components/speech');
-var About       = require('../js/components/about');
-var Footer      = require('../js/components/footer');
-
-var actions  = require('../js/actions/index');
-var reducer  = require('../js/reducers/index');
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+const should = require('chai').should();
+import actions from '../js/actions';
+import { appReducer } from '../js/reducers';
 
 // test data
 var state;
@@ -54,52 +45,7 @@ var page = {
 var searchString = 'search-term';
 
 
-describe('The App', () => {
-  // render tests
-  it('loads.', () => {
-    var renderer = TestUtils.createRenderer();
-    renderer.render(<App store={store} />);
-    var result = renderer.getRenderOutput();
-
-    result.type.should.equal('div');
-    result.props.children.should.be.an('array');
-    result.props.children.should.have.length(3);
-  });
-
-  it('Header renders and receives mapped props.', () => {
-    var renderer = TestUtils.createRenderer();
-    renderer.render(<Header store={store} />);
-    var result = renderer.getRenderOutput();
-
-    result.props.name.should.be.a('string');
-    result.props.description.should.be.a('string');
-    result.props.speeches.should.be.an('object');
-    result.props.name.should.equal('');
-    result.props.description.should.equal('');
-  });
-
-  it('SpeechList renders and receives mapped props.', () => {
-    var renderer = TestUtils.createRenderer();
-    renderer.render(<SpeechList store={store} />);
-    var result = renderer.getRenderOutput();
-
-    result.props.speeches.should.be.an('object');
-  });
-
-  it('About renders and receives mapped props.', () => {
-    var renderer = TestUtils.createRenderer();
-    renderer.render(<About store={store} />);
-    var result = renderer.getRenderOutput();
-
-    result.props.aboutPage.should.be.an('object');
-  });
-
-  it('Footer renders.', () => {
-    var renderer = TestUtils.createRenderer();
-    renderer.render(<Footer store={store} />);
-    var result = renderer.getRenderOutput();
-  });
-
+describe('The action', () => {
   // actions and reducer tests
   it('FETCH_SPEECHES_SUCCESS can get speeches.', () => {
     actions.fetchSpeeches(speeches);
@@ -109,7 +55,7 @@ describe('The App', () => {
       speeches: speeches
     };
 
-    var newState = reducer.appReducer(state, action);
+    var newState = appReducer(state, action);
 
     newState.speeches.should.be.an('object');
     newState.speeches['1'].id.should.equal(1);
@@ -136,7 +82,7 @@ describe('The App', () => {
       currentSpeech: speech
     };
 
-    var newState = reducer.appReducer(state, action);
+    var newState = appReducer(state, action);
 
     newState.speeches.should.be.an('object');
     newState.speeches['2'].id.should.equal(2);
@@ -151,7 +97,7 @@ describe('The App', () => {
       page: page
     };
 
-    var newState = reducer.appReducer(state, action);
+    var newState = appReducer(state, action);
 
     newState.aboutPage.should.be.an('object');
     newState.aboutPage.id.should.equal(2);
@@ -166,7 +112,7 @@ describe('The App', () => {
       description: siteInfo.description
     };
 
-    var newState = reducer.appReducer(state, action);
+    var newState = appReducer(state, action);
 
     newState.name.should.be.a('string');
     newState.name.should.equal('Site name');
@@ -206,7 +152,7 @@ describe('The App', () => {
       searchString: searchString
     };
 
-    var newState = reducer.appReducer(state, action);
+    var newState = appReducer(state, action);
     var prevSpeechesLength = Object.keys(state.speeches).length;
     var newSpeechesLength  = Object.keys(newState.speeches).length;
 
