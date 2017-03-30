@@ -5,9 +5,9 @@ import actions from '../js/actions';
 import { appReducer } from '../js/reducers';
 
 // test data
-var state;
+let state;
 
-var initialState = {
+const initialState = {
   name: '',
   description: '',
   aboutPage: {},
@@ -16,12 +16,12 @@ var initialState = {
   searchString: ''
 };
 
-var siteInfo = {
+const siteInfo = {
   'name': 'Site name',
   'description': 'Site description'
 };
 
-var speeches = [
+const speeches = [
   {
     'id': 1,
     'title': { 'rendered': 'Test title 1' },
@@ -36,13 +36,13 @@ var speeches = [
   }
 ];
 
-var page = {
+const page = {
   'id': 2,
   'title': { 'rendered': 'About'},
   'content': { 'rendered': 'About page content'}
 };
 
-var searchString = 'search-term';
+const searchString = 'search-term';
 
 
 describe('The action', () => {
@@ -50,12 +50,12 @@ describe('The action', () => {
   it('FETCH_SPEECHES_SUCCESS can get speeches.', () => {
     actions.fetchSpeeches(speeches);
 
-    var action = {
+    const action = {
       type: 'FETCH_SPEECHES_SUCCESS',
       speeches: speeches
     };
 
-    var newState = appReducer(state, action);
+    const newState = appReducer(state, action);
 
     newState.speeches.should.be.an('object');
     newState.speeches['1'].id.should.equal(1);
@@ -71,18 +71,18 @@ describe('The action', () => {
   it('FETCH_SINGLE_SPEECH_SUCCESS can retrieve a speech.', () => {
     state = initialState;
 
-    var speech = {
+    const speech = {
       'id': 2,
       'title': { 'rendered': 'Test title 2' },
       'content': { 'rendered': 'Test content 2' },
       'excerpt': { 'rendered': 'Test excerpt 2' }
     };
-    var action = {
+    const action = {
       type: 'FETCH_SINGLE_SPEECH_SUCCESS',
       currentSpeech: speech
     };
 
-    var newState = appReducer(state, action);
+    const newState = appReducer(state, action);
 
     newState.speeches.should.be.an('object');
     newState.speeches['2'].id.should.equal(2);
@@ -92,12 +92,12 @@ describe('The action', () => {
   });
 
   it('FETCH_ABOUT_PAGE_SUCCESS can retrieve about page information.', () => {
-    var action = {
+    const action = {
       type: 'FETCH_ABOUT_PAGE_SUCCESS',
       page: page
     };
 
-    var newState = appReducer(state, action);
+    const newState = appReducer(state, action);
 
     newState.aboutPage.should.be.an('object');
     newState.aboutPage.id.should.equal(2);
@@ -106,13 +106,13 @@ describe('The action', () => {
   });
 
   it('FETCH_SITE_INFO_SUCCESS can retrieve site information.', () => {
-    var action = {
+    const action = {
       type: 'FETCH_SITE_INFO_SUCCESS',
       name: siteInfo.name,
       description: siteInfo.description
     };
 
-    var newState = appReducer(state, action);
+    const newState = appReducer(state, action);
 
     newState.name.should.be.a('string');
     newState.name.should.equal('Site name');
@@ -137,7 +137,7 @@ describe('The action', () => {
       }
     };
 
-    var searchResults = [
+    const searchResults = [
       {
         'id': 1,
         'title': { 'rendered': 'Test title 1.1' },
@@ -146,15 +146,15 @@ describe('The action', () => {
       }
     ];
 
-    var action = {
+    const action = {
       type: 'FETCH_SEARCH_SUCCESS',
       speeches: searchResults,
       searchString: searchString
     };
 
-    var newState = appReducer(state, action);
-    var prevSpeechesLength = Object.keys(state.speeches).length;
-    var newSpeechesLength  = Object.keys(newState.speeches).length;
+    const newState = appReducer(state, action);
+    const prevSpeechesLength = Object.keys(state.speeches).length;
+    const newSpeechesLength  = Object.keys(newState.speeches).length;
 
     newState.searchString.should.be.a('string');
     newState.searchString.should.equal('search-term');
