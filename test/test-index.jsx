@@ -1,8 +1,7 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-const should = require('chai').should();
+import { should } from 'chai';
 import actions from '../js/actions';
 import { appReducer } from '../js/reducers';
+should();
 
 // test data
 let state;
