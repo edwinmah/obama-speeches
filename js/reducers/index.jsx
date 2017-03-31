@@ -16,7 +16,7 @@ export const appReducer = (state, action) => {
 
   switch (action.type) {
     case actions.FETCH_SPEECHES_SUCCESS :
-      var newSpeeches = {};
+      let newSpeeches = {};
       action.speeches.forEach(function(speech) {
         newSpeeches[speech.id] = speech;
       });
@@ -27,10 +27,10 @@ export const appReducer = (state, action) => {
       break;
 
     case actions.FETCH_SINGLE_SPEECH_SUCCESS :
-      var newSpeeches = Object.assign({}, state.speeches, {
+      const newSpeech = Object.assign({}, state.speeches, {
         [action.currentSpeech.id]: action.currentSpeech
       });
-      return Object.assign({}, state, { speeches: newSpeeches });
+      return Object.assign({}, state, { speeches: newSpeech });
       break;
 
     case actions.FETCH_ABOUT_PAGE_SUCCESS :
@@ -45,12 +45,12 @@ export const appReducer = (state, action) => {
       break;
 
     case actions.FETCH_SEARCH_SUCCESS :
-      var newSpeeches = {};
+      let newSearch = {};
       action.speeches.forEach(function(speech) {
-        newSpeeches[speech.id] = speech;
+        newSearch[speech.id] = speech;
       });
       return Object.assign({}, state, {
-        speeches: newSpeeches,
+        speeches: newSearch,
         searchString: action.searchString
       });
       break;
