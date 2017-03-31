@@ -1,5 +1,5 @@
 import { should } from 'chai';
-import actions from '../js/actions';
+import * as actions from '../js/actions';
 import { appReducer } from '../js/reducers';
 should();
 

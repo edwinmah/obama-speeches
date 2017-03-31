@@ -1,8 +1,8 @@
 import 'isomorphic-fetch';
 
 
-const FETCH_SPEECHES_SUCCESS = 'FETCH_SPEECHES_SUCCESS';
-const fetchSpeechesSuccess = (speeches) => {
+export const FETCH_SPEECHES_SUCCESS = 'FETCH_SPEECHES_SUCCESS';
+export const fetchSpeechesSuccess = (speeches) => {
   return {
     type: FETCH_SPEECHES_SUCCESS,
     speeches: speeches
@@ -10,8 +10,8 @@ const fetchSpeechesSuccess = (speeches) => {
 };
 
 
-const FETCH_SPEECHES_ERROR = 'FETCH_SPEECHES_ERROR';
-const fetchSpeechesError = (speeches, error) => {
+export const FETCH_SPEECHES_ERROR = 'FETCH_SPEECHES_ERROR';
+export const fetchSpeechesError = (speeches, error) => {
   return {
     type: FETCH_SPEECHES_ERROR,
     speeches: speeches,
@@ -20,7 +20,7 @@ const fetchSpeechesError = (speeches, error) => {
 };
 
 
-const fetchSpeeches = (speeches) => {
+export const fetchSpeeches = (speeches) => {
   return (dispatch) => {
     var init = { method: 'GET' };
     var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12';
@@ -47,8 +47,8 @@ const fetchSpeeches = (speeches) => {
 };
 
 
-const FETCH_SINGLE_SPEECH_SUCCESS = 'FETCH_SINGLE_SPEECH_SUCCESS';
-const fetchSingleSpeechSuccess = (speech) => {
+export const FETCH_SINGLE_SPEECH_SUCCESS = 'FETCH_SINGLE_SPEECH_SUCCESS';
+export const fetchSingleSpeechSuccess = (speech) => {
   return {
     type: FETCH_SINGLE_SPEECH_SUCCESS,
     currentSpeech: speech
@@ -56,8 +56,8 @@ const fetchSingleSpeechSuccess = (speech) => {
 };
 
 
-const FETCH_SINGLE_SPEECH_ERROR = 'FETCH_SINGLE_SPEECH_ERROR';
-const fetchSingleSpeechError = (speech, error) => {
+export const FETCH_SINGLE_SPEECH_ERROR = 'FETCH_SINGLE_SPEECH_ERROR';
+export const fetchSingleSpeechError = (speech, error) => {
   return {
     type: FETCH_SINGLE_SPEECH_ERROR,
     currentSpeech: speech,
@@ -66,7 +66,7 @@ const fetchSingleSpeechError = (speech, error) => {
 };
 
 
-const fetchSingleSpeech = (speechId) => {
+export const fetchSingleSpeech = (speechId) => {
   return (dispatch) => {
     const init = { method: 'GET' };
     const url  = `https://www.edwinmah.com/r/wp-json/wp/v2/speeches/${speechId}`;
@@ -93,8 +93,8 @@ const fetchSingleSpeech = (speechId) => {
 };
 
 
-const FETCH_ABOUT_PAGE_SUCCESS = 'FETCH_ABOUT_PAGE_SUCCESS';
-const fetchAboutPageSuccess = (page) => {
+export const FETCH_ABOUT_PAGE_SUCCESS = 'FETCH_ABOUT_PAGE_SUCCESS';
+export const fetchAboutPageSuccess = (page) => {
   return {
     type: FETCH_ABOUT_PAGE_SUCCESS,
     page: page
@@ -102,8 +102,8 @@ const fetchAboutPageSuccess = (page) => {
 };
 
 
-const FETCH_ABOUT_PAGE_ERROR = 'FETCH_ABOUT_PAGE_ERROR';
-const fetchAboutPageError = (page, error) => {
+export const FETCH_ABOUT_PAGE_ERROR = 'FETCH_ABOUT_PAGE_ERROR';
+export const fetchAboutPageError = (page, error) => {
   return {
     type: FETCH_ABOUT_PAGE_ERROR,
     page: page,
@@ -112,7 +112,7 @@ const fetchAboutPageError = (page, error) => {
 };
 
 
-const fetchAboutPage = () => {
+export const fetchAboutPage = () => {
   return (dispatch) => {
     const init = { method: 'GET' };
     const url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/pages/2';
@@ -139,8 +139,8 @@ const fetchAboutPage = () => {
 };
 
 
-const FETCH_SITE_INFO_SUCCESS = 'FETCH_SITE_INFO_SUCCESS';
-const fetchSiteInfoSuccess = (name, description) => {
+export const FETCH_SITE_INFO_SUCCESS = 'FETCH_SITE_INFO_SUCCESS';
+export const fetchSiteInfoSuccess = (name, description) => {
   return {
     type: FETCH_SITE_INFO_SUCCESS,
     name: name,
@@ -149,8 +149,8 @@ const fetchSiteInfoSuccess = (name, description) => {
 };
 
 
-const FETCH_SITE_INFO_ERROR = 'FETCH_SITE_INFO_ERROR';
-const fetchSiteInfoError = (name, description, error) => {
+export const FETCH_SITE_INFO_ERROR = 'FETCH_SITE_INFO_ERROR';
+export const fetchSiteInfoError = (name, description, error) => {
   return {
     type: FETCH_SITE_INFO_ERROR,
     name: name,
@@ -160,7 +160,7 @@ const fetchSiteInfoError = (name, description, error) => {
 };
 
 
-const fetchSiteInfo = () => {
+export const fetchSiteInfo = () => {
   return (dispatch) => {
     const init = { method: 'GET' };
     const url  = 'https://www.edwinmah.com/r/wp-json';
@@ -190,8 +190,8 @@ const fetchSiteInfo = () => {
 };
 
 
-const FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
-const fetchSearchSuccess = (speeches, searchString) => {
+export const FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
+export const fetchSearchSuccess = (speeches, searchString) => {
   return {
     type: FETCH_SEARCH_SUCCESS,
     speeches: speeches,
@@ -200,8 +200,8 @@ const fetchSearchSuccess = (speeches, searchString) => {
 };
 
 
-const FETCH_SEARCH_ERROR = 'FETCH_SEARCH_ERROR';
-const fetchSearchError = (speeches, searchString, error) => {
+export const FETCH_SEARCH_ERROR = 'FETCH_SEARCH_ERROR';
+export const fetchSearchError = (speeches, searchString, error) => {
   return {
     type: FETCH_SEARCH_ERROR,
     speeches: speeches,
@@ -211,7 +211,7 @@ const fetchSearchError = (speeches, searchString, error) => {
 };
 
 
-const fetchSearch = (searchString) => {
+export const fetchSearch = (searchString) => {
   return (dispatch) => {
     const init = { method: 'GET' };
     const url  = `https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12&search=${searchString}`;
@@ -236,44 +236,3 @@ const fetchSearch = (searchString) => {
     });
   }
 };
-
-
-exports.FETCH_SPEECHES_SUCCESS  = FETCH_SPEECHES_SUCCESS;
-exports.fetchSpeechesSuccess    = fetchSpeechesSuccess;
-
-exports.FETCH_SPEECHES_ERROR  = FETCH_SPEECHES_ERROR;
-exports.fetchSpeechesError    = fetchSpeechesError;
-
-exports.fetchSpeeches  = fetchSpeeches;
-
-exports.FETCH_SINGLE_SPEECH_SUCCESS = FETCH_SINGLE_SPEECH_SUCCESS;
-exports.fetchSingleSpeechSuccess    = fetchSingleSpeechSuccess;
-
-exports.FETCH_SINGLE_SPEECH_ERROR = FETCH_SINGLE_SPEECH_ERROR;
-exports.fetchSingleSpeechError    = fetchSingleSpeechError;
-
-exports.fetchSingleSpeech  = fetchSingleSpeech;
-
-exports.FETCH_ABOUT_PAGE_SUCCESS = FETCH_ABOUT_PAGE_SUCCESS;
-exports.fetchAboutPageSuccess    = fetchAboutPageSuccess;
-
-exports.FETCH_ABOUT_PAGE_ERROR = FETCH_ABOUT_PAGE_ERROR;
-exports.fetchAboutPageError    = fetchAboutPageError;
-
-exports.fetchAboutPage = fetchAboutPage;
-
-exports.FETCH_SITE_INFO_SUCCESS = FETCH_SITE_INFO_SUCCESS;
-exports.fetchSiteInfoSuccess    = fetchSiteInfoSuccess;
-
-exports.FETCH_SITE_INFO_ERROR = FETCH_SITE_INFO_ERROR;
-exports.fetchSiteInfoError    = fetchSiteInfoError;
-
-exports.fetchSiteInfo = fetchSiteInfo;
-
-exports.FETCH_SEARCH_SUCCESS  = FETCH_SEARCH_SUCCESS;
-exports.fetchSearchSuccess    = fetchSearchSuccess;
-
-exports.FETCH_SEARCH_ERROR  = FETCH_SEARCH_ERROR;
-exports.fetchSearchError    = fetchSearchError;
-
-exports.fetchSearch  = fetchSearch;
