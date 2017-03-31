@@ -22,8 +22,8 @@ export const fetchSpeechesError = (speeches, error) => {
 
 export const fetchSpeeches = (speeches) => {
   return (dispatch) => {
-    var init = { method: 'GET' };
-    var url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12';
+    const init = { method: 'GET' };
+    const url  = 'https://www.edwinmah.com/r/wp-json/wp/v2/speeches?per_page=12';
 
     return fetch(url, init).then((response) => {
       if (response.status < 200 || response.status >= 300) {
