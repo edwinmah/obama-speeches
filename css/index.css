@@ -324,7 +324,7 @@ html {
   -webkit-box-ordinal-group: 2;
   -ms-flex-order: 1;
   order: 1;
-  padding: 2.5% 5%;;
+  padding: 0% 2.5%;
 }
 
 @media (min-width: 48em) {
