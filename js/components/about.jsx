@@ -18,16 +18,16 @@ class About extends React.Component {
 
     if (!title || !content) {
       return (
-        <section id="about" className="about column sm-one-half">
-          <div className="about__entry--loading column">Loading<Loading /></div>
+        <section id="about" className="about">
+          <div className="about__entry--loading">Loading<Loading /></div>
         </section>
       );
     }
 
     return (
-      <section id="about" className="about column sm-one-half">
-        <h2 className="about__title column">{title.rendered}</h2>
-        <div className="about__entry column" dangerouslySetInnerHTML={{ __html: content.rendered }} />
+      <section id="about" className="about">
+        <h2 className="about__title">{title.rendered}</h2>
+        <div className="about__entry" dangerouslySetInnerHTML={{ __html: content.rendered }} />
       </section>
     );
   }

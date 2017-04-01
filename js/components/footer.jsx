@@ -6,7 +6,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <footer role="contentinfo" className="site-footer">
-        <div className="site-footer__media sm-one-half">
+        <div className="site-footer__media">
           <img src="assets/images/8475945531_008ecf0cc4_o--medium.jpg"
             srcSet="assets/images/8475945531_008ecf0cc4_o--x-large.jpg 1200w,
                     assets/images/8475945531_008ecf0cc4_o--large.jpg 819w,
@@ -14,9 +14,7 @@ export default class Footer extends React.Component {
             sizes="100vw"
             alt="President Obama reviews edits of his second inaugural speech" className="site-footer__img" />
         </div>
-        <div className="container container--max">
-          <About />
-        </div>
+        <About />
       </footer>
     );
   }
