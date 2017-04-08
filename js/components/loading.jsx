@@ -47,24 +47,24 @@ export default class Loading extends React.Component {
     }
 
     const keyframesWebkit = `@-webkit-keyframes sk-bouncedelay {
-                              0%, 80%, 100% {
-                                -webkit-transform: scale(.2);
-                                transform: scale(.2);
-                              } 40% {
-                                -webkit-transform: scale(.5);
-                                transform: scale(.5);
-                              }
-                            }`;
+      0%, 80%, 100% {
+        -webkit-transform: scale(.2);
+        transform: scale(.2);
+      } 40% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+      }
+    }`;
 
     const keyframes = `@keyframes sk-bouncedelay {
-                          0%, 80%, 100% {
-                            -webkit-transform: scale(.2);
-                            transform: scale(.2);
-                          } 40% {
-                            -webkit-transform: scale(.5);
-                            transform: scale(.5);
-                          }
-                        }`;
+      0%, 80%, 100% {
+        -webkit-transform: scale(.2);
+        transform: scale(.2);
+      } 40% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+      }
+    }`;
 
     styleSheet[2].insertRule(keyframesWebkit, styleSheet.length);
     styleSheet[2].insertRule(keyframes, styleSheet.length);
