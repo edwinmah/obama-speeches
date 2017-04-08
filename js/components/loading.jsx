@@ -59,10 +59,10 @@ export default class Loading extends React.Component {
     styleSheet[2].insertRule(this.keyframeRule('', `${animationName}`), styleSheet.length);
 
     return (
-      <span className="spinner" style={spinnerStyle}>
-        <span className="bounce1" style={this.bounceStyle(`${animationName}`, '-.32s')}></span>
-        <span className="bounce2" style={this.bounceStyle(`${animationName}`, '-.16s')}></span>
-        <span className="bounce3" style={this.bounceStyle(`${animationName}`, '0s')}></span>
+      <span style={spinnerStyle}>
+        <span style={this.bounceStyle(`${animationName}`, '-.32s')}></span>
+        <span style={this.bounceStyle(`${animationName}`, '-.16s')}></span>
+        <span style={this.bounceStyle(`${animationName}`, '0s')}></span>
       </span>
     );
   }
