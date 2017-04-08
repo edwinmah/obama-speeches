@@ -18,6 +18,20 @@ export default class Loading extends React.Component {
     );
   }
 
+  keyframeRule(property, animationName, scale1, scale2) {
+    return (
+      `@${property} ${animationName} {
+        0%, 80%, 100% {
+        -webkit-transform: scale(${scale1});
+        transform: scale(${scale1});
+        } 40% {
+        -webkit-transform: scale(${scale2});
+        transform: scale(${scale2});
+        }
+      }`
+    );
+  }
+
   render() {
     const styleSheet = document.styleSheets;
 
@@ -28,28 +42,13 @@ export default class Loading extends React.Component {
       textAlign: 'center'
     }
 
-    const keyframesWebkit = `@-webkit-keyframes sk-bouncedelay {
-      0%, 80%, 100% {
-        -webkit-transform: scale(.2);
-        transform: scale(.2);
-      } 40% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5);
-      }
-    }`;
+    styleSheet[2].insertRule(
+      this.keyframeRule('-webkit-keyframes', 'sk-bouncedelay', '.2', '.5'),
+      styleSheet.length);
 
-    const keyframes = `@keyframes sk-bouncedelay {
-      0%, 80%, 100% {
-        -webkit-transform: scale(.2);
-        transform: scale(.2);
-      } 40% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5);
-      }
-    }`;
-
-    styleSheet[2].insertRule(keyframesWebkit, styleSheet.length);
-    styleSheet[2].insertRule(keyframes, styleSheet.length);
+    styleSheet[2].insertRule(
+      this.keyframeRule('keyframes', 'sk-bouncedelay', '.2', '.5'),
+      styleSheet.length);
 
     return (
       <span className="spinner" style={spinnerStyle}>
