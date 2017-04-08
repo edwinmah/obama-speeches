@@ -2,6 +2,22 @@ import React from 'react';
 
 
 export default class Loading extends React.Component {
+  bounceStyle(animationDelay) {
+    return (
+      {
+        display: 'inline-block',
+        width: '1.125em',
+        height: '1.125em',
+        borderRadius: '100%',
+        backgroundColor: '#551413',
+        WebkitAnimation: 'sk-bouncedelay .8s infinite ease-in-out both',
+        animation: 'sk-bouncedelay .8s infinite ease-in-out both',
+        WebkitAnimationDelay: `${animationDelay}`,
+        animationDelay: `${animationDelay}`
+      }
+    );
+  }
+
   render() {
     const styleSheet = document.styleSheets;
 
@@ -10,40 +26,6 @@ export default class Loading extends React.Component {
       margin: '0 auto',
       width: '4.375em',
       textAlign: 'center'
-    }
-
-    const bounce1 = {
-      display: 'inline-block',
-      width: '1.125em',
-      height: '1.125em',
-      borderRadius: '100%',
-      backgroundColor: '#551413',
-      WebkitAnimation: 'sk-bouncedelay .8s infinite ease-in-out both',
-      animation: 'sk-bouncedelay .8s infinite ease-in-out both',
-      WebkitAnimationDelay: '-0.32s',
-      animationDelay: '-0.32s'
-    }
-
-    const bounce2 = {
-      display: 'inline-block',
-      width: '1.125em',
-      height: '1.125em',
-      borderRadius: '100%',
-      backgroundColor: '#551413',
-      WebkitAnimation: 'sk-bouncedelay .8s infinite ease-in-out both',
-      animation: 'sk-bouncedelay .8s infinite ease-in-out both',
-      WebkitAnimationDelay: '-0.16s',
-      animationDelay: '-0.16s'
-    }
-
-    const bounce3 = {
-      display: 'inline-block',
-      width: '1.125em',
-      height: '1.125em',
-      borderRadius: '100%',
-      backgroundColor: '#551413',
-      WebkitAnimation: 'sk-bouncedelay .8s infinite ease-in-out both',
-      animation: 'sk-bouncedelay .8s infinite ease-in-out both'
     }
 
     const keyframesWebkit = `@-webkit-keyframes sk-bouncedelay {
@@ -71,9 +53,9 @@ export default class Loading extends React.Component {
 
     return (
       <span className="spinner" style={spinnerStyle}>
-        <span className="bounce1" style={bounce1}></span>
-        <span className="bounce2" style={bounce2}></span>
-        <span className="bounce3" style={bounce3}></span>
+        <span className="bounce1" style={this.bounceStyle('-.32s')}></span>
+        <span className="bounce2" style={this.bounceStyle('-.16s')}></span>
+        <span className="bounce3" style={this.bounceStyle('0s')}></span>
       </span>
     );
   }
