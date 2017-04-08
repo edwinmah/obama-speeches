@@ -9,7 +9,7 @@ export default class Loading extends React.Component {
       verticalAlign: 'sub',
       margin: '0 auto',
       width: '4.375em',
-      textAlign: 'center',
+      textAlign: 'center'
     }
 
     const bounce1 = {
