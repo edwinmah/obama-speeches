@@ -55,8 +55,8 @@ export default class Loading extends React.Component {
       textAlign: 'center'
     };
 
-    styleSheet[2].insertRule(this.keyframeRule('-webkit-', `${animationName}`), styleSheet.length);
-    styleSheet[2].insertRule(this.keyframeRule('', `${animationName}`), styleSheet.length);
+    styleSheet[0].insertRule(this.keyframeRule('-webkit-', `${animationName}`), styleSheet.length);
+    styleSheet[0].insertRule(this.keyframeRule('', `${animationName}`), styleSheet.length);
 
     return (
       <span style={spinnerStyle}>
