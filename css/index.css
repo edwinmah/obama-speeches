@@ -2,6 +2,7 @@
 /*! Base Styles  */
 /*****************/
 body {
+  margin: 0;
   background: #ffffff;
   color: #222222;
   font: 87.5%/1.5 "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
@@ -290,6 +291,7 @@ html {
   height: 100%;
   width: 100%;
   font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+  font-size: 100%;
 }
 
 .search__button {
@@ -297,6 +299,7 @@ html {
   border: 0;
   color: #ffffff;
   font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+  font-size: 100%;
   background-color: #551413;
 }
 
