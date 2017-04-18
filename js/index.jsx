@@ -1,5 +1,8 @@
 import 'normalize.css/normalize.css';
 import '../css/index.css';
+import '../assets/images/8475945531_008ecf0cc4_o--medium.jpg';
+import '../assets/images/8475945531_008ecf0cc4_o--large.jpg';
+import '../assets/images/8475945531_008ecf0cc4_o--x-large.jpg';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';

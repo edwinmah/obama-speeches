@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const plugins = [
@@ -9,12 +9,11 @@ const plugins = [
     filename: './css/bundle.css',
     allChunks: true
   }),
-  new CopyWebpackPlugin([
-    {
-      from: 'index.html',
-      to: './'
-    }]
-  )
+  new HtmlWebpackPlugin({
+    template: path.resolve( __dirname, 'index.html'),
+    filename: 'index.html',
+    inject: 'body'
+  })
 ]
 
 
@@ -31,7 +30,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: 'babel-loader',
-        include: __dirname + '/js'
+        include: path.resolve(__dirname, 'js')
       }, {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({

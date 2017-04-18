@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "dev": "run-p start",
+    "dev": "npm run build-dev && npm run start",
     "test": "mocha --recursive --compilers jsx:babel-core/register",
     "cleanup": "trash build",
     "build-dev": "npm run cleanup && webpack --bail --progress",
@@ -48,6 +48,7 @@
     "enzyme": "^2.4.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.3.0",
     "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^6.0.0",
