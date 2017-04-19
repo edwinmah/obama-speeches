@@ -61,10 +61,7 @@ module.exports = {
             outputPath: '/assets/images/'
           }
         }, {
-          loader: 'image-webpack-loader',
-          // set empty object for default config bug:
-          // https://github.com/tcoopman/image-webpack-loader/issues/88#issuecomment-289454242
-          options: {}
+          loader: 'image-webpack-loader'
         }]
       }
     ]
