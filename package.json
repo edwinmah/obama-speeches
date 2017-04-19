@@ -15,7 +15,7 @@
     "build-dev": "npm run cleanup && webpack --bail --progress",
     "build-prod": "npm run cleanup && webpack --bail -p",
     "watch": "run-p build-dev watch",
-    "heroku-postbuild": "npm run build-dev"
+    "heroku-postbuild": "npm run build-prod"
   },
   "repository": {
     "type": "git",
