@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
 
 
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || '3000';
+
 const plugins = [
   new ExtractTextPlugin({
     filename: './css/bundle.css',
@@ -71,6 +74,8 @@ module.exports = {
   },
   plugins: plugins,
   devServer: {
-    contentBase: path.join(__dirname, 'build')
+    contentBase: path.join(__dirname, 'build'),
+    port: PORT,
+    host: HOST
   }
 };
