@@ -51,7 +51,7 @@
     "file-loader": "^0.11.1",
     "google-fonts-webpack-plugin": "^0.3.0",
     "html-webpack-plugin": "^2.28.0",
-    "image-webpack-loader": "^3.3.0",
+    "image-webpack-loader": "github:tcoopman/image-webpack-loader",
     "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^6.0.0",
     "npm-run-all": "^3.0.0",
