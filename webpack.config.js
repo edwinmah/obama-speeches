@@ -73,6 +73,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     compress: true,
-    port: process.env.PORT || 3000
+    port: 3000
   }
 };
