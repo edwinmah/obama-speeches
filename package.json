@@ -4,7 +4,8 @@
   "description": "Curated speeches by President Obama",
   "main": "js/index.jsx",
   "engines": {
-    "node": "6.9.5"
+    "node": "6.9.5",
+    "npm": "3.10.7"
   },
   "scripts": {
     "start": "webpack-dev-server",
