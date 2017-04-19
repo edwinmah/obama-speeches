@@ -14,7 +14,7 @@
     "cleanup": "trash build",
     "build-dev": "npm run cleanup && webpack --bail --progress",
     "build-prod": "webpack --bail -p",
-    "heroku-postbuild": "npm run build-prod && npm run start"
+    "heroku-postbuild": "npm run build-prod"
   },
   "repository": {
     "type": "git",
