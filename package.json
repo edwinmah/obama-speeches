@@ -13,7 +13,7 @@
     "test": "mocha --recursive --compilers jsx:babel-core/register",
     "cleanup": "trash build",
     "build-dev": "npm run cleanup && webpack --bail --progress",
-    "build-prod": "webpack -p",
+    "build-prod": "webpack --bail -p",
     "watch": "run-p build-dev watch",
     "heroku-postbuild": "npm run build-prod"
   },
@@ -30,9 +30,12 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
+    "enzyme": "^2.4.1",
     "mocha": "^3.0.1",
+    "npm-run-all": "^3.0.0",
     "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "trash-cli": "^1.4.0"
   },
   "dependencies": {
     "babel-cli": "^6.11.4",
@@ -46,7 +49,6 @@
     "copy-webpack-plugin": "^4.0.1",
     "create-react-class": "^15.5.2",
     "css-loader": "^0.28.0",
-    "enzyme": "^2.4.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "google-fonts-webpack-plugin": "^0.3.0",
@@ -54,7 +56,6 @@
     "image-webpack-loader": "github:tcoopman/image-webpack-loader",
     "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^6.0.0",
-    "npm-run-all": "^3.0.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.4.2",
@@ -63,7 +64,6 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "style-loader": "^0.16.1",
-    "trash-cli": "^1.4.0",
     "uglify-js": "^2.8.22",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2"
