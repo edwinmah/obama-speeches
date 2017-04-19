@@ -13,7 +13,7 @@
     "test": "mocha --recursive --compilers jsx:babel-core/register",
     "cleanup": "trash build",
     "build-dev": "npm run cleanup && webpack --bail --progress",
-    "build-prod": "npm run cleanup && webpack --bail -p",
+    "build-prod": "webpack --bail -p",
     "watch": "run-p build-dev watch",
     "heroku-postbuild": "npm run build-prod"
   },
